@@ -1,0 +1,89 @@
+@mixin navbar($height) {
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  width: 100%;
+  height: $height;
+}
+
+@mixin nav-block($top, $left) {
+  height: 80%;
+  position: absolute;
+  transform: translate(-50%, -50%) rotateZ(0deg);
+  top: $top;
+  left: $left;
+  z-index: 1;
+  transition: all 0.75s ease-in-out;
+  color: #222;
+  &:hover {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@mixin text($fontsize) {
+  position: absolute;
+  margin: 0;
+  font-size: $fontsize;
+  text-decoration: none;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 1120px) {
+    font-size: 8px;
+  }
+}
+
+.large-header {
+  @include navbar(20px);
+}
+
+.small-header {
+  @include navbar(12px);
+}
+
+.large-text {
+  @include text(16px);
+}
+
+.small-text {
+  @include text(12px);
+}
+
+.nav-block1 {
+  @include nav-block(50, 10);
+}
+
+.nav-block2 {
+  @include nav-block(50, 20);
+}
+
+.nav-block3 {
+  @include nav-block(50, 60);
+}
+
+.nav-block4 {
+  @include nav-block(80, 70);
+}
+
+.nav-block5 {
+  @include nav-block(50, 70);
+}
+
+.nav-block6 {
+  @include nav-block(50, 80);
+}
+
+.nav-block7 {
+  @include nav-block(80, 90);
+}
+
+.nav-block8 {
+  @include nav-block(50, 90);
+}
+
+.hover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}

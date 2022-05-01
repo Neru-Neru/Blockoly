@@ -1,12 +1,21 @@
 import React, { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { TextField, Button } from '@mui/material'
+
 const Signin: React.FC = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
+
+  const inputUsername = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setUsername(event.target.value)
+    },
+    [setUsername]
+  )
 
   const inputEmail = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,13 +31,13 @@ const Signin: React.FC = () => {
     [setPassword]
   )
 
-  const signIn = async (_username: string, _email: string, _password: string) => {
+  const signIn = (_username: string, _email: string, _password: string) => {
     if (_username === '' || _email === '' || _password === '') {
       alert('にゅうりょくしていないところがあるよ')
       return false
     }
     try {
-      await auth.signInWithEmailAndPassword(_email, _password)
+      // await auth.signInWithEmailAndPassword(_email, _password)
       navigate('/')
     } catch (error) {
       console.log(error)
@@ -37,16 +46,14 @@ const Signin: React.FC = () => {
   }
 
   return (
-    <div css={Background}>
-      <div css={ContentBack}>
+    <div /* css={Background} */>
+      <div /* css={ContentBack} */>
         <div className=" d-flex justify-content-center">
           <h2 className="text-center">ログインがめん</h2>
         </div>
         <div className="my-3 mx-auto" style={{ width: '50%' }}>
           <TextField fullWidth label="なまえ" margin="dense" type="text" value={username} onChange={inputUsername} />
-          <label>テスト用：トモダチ1</label>
           <TextField fullWidth label="メールアドレス" margin="dense" type="email" value={email} onChange={inputEmail} />
-          <label>テスト用：tomo1@mail.com</label>
           <TextField
             fullWidth
             label="パスワード"
@@ -55,15 +62,14 @@ const Signin: React.FC = () => {
             value={password}
             onChange={inputPassword}
           />
-          <label>テスト用：adatomo</label>
           <div className="mt-5 d-flex justify-content-center">
             <Button
+              variant="contained"
+              classes="text-center btn btn-primary"
+              size="large"
               onClick={() => {
                 signIn(username, email, password)
               }}
-              variant="contained"
-              class="text-center btn btn-primary"
-              size="large"
             >
               ログインする
             </Button>
