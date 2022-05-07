@@ -1,6 +1,6 @@
 # Getting Started with Docker
 
-1. Type it at first.
+1. Go to `/blockory` and run below.
 
    ```
    docker-compose up
@@ -12,4 +12,4 @@
 
    Wait a minute again. (In my environment, 80s is needed.)
 
-3. After webpack compile, go to [`http://localhost:3000/`](url) .
+3. After webpack compile, go to [`http://localhost:3000/`](http://localhost:3000/) .
