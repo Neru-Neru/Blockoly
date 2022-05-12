@@ -2,6 +2,12 @@ import React, { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { TextField, Button } from '@mui/material'
+import axios from 'axios'
+
+type UserInfo = {
+  UserId: string
+  UserName: string
+}
 
 const Signin: React.FC = () => {
   const [username, setUsername] = useState('')
@@ -31,13 +37,16 @@ const Signin: React.FC = () => {
     [setPassword]
   )
 
-  const signIn = (_username: string, _email: string, _password: string) => {
+  const signIn = async (_username: string, _email: string, _password: string) => {
     if (_username === '' || _email === '' || _password === '') {
       alert('にゅうりょくしていないところがあるよ')
       return false
     }
     try {
-      // await auth.signInWithEmailAndPassword(_email, _password)
+      // TODO: confirm to the response when get login API method
+      const res: UserInfo = await axios.get(`url`, {
+        params: {},
+      })
       navigate('/')
     } catch (error) {
       console.log(error)
