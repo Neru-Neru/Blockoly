@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import './Top.scss'
 
-import Topdish from '../../img/top_dish.png'
-import Logo from '../../img/logo.png'
-import Mayonnase from '../../img/mayonnaise.png'
+import Topdish from 'img/top_dish.png'
+import Logo from 'img/logo.png'
+import Mayonnase from 'img/mayonnaise.png'
 
 const Top: React.FC = () => (
   <div style={{ height: '100%' }}>

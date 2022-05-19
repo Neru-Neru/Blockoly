@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
+
 import axios from 'axios'
+
+import Calendar from 'components/Calendar/Calendar'
 
 type DiaryInfo = {
   diaryId: string
@@ -22,9 +25,10 @@ const MyDiaryList: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result: DiaryInfoList = await axios.get(`url`, {
+      const result: DiaryInfoList = await axios.get(`http://localhost:8080/AllDiaryInfoMonth`, {
         params: {
-          year: date.year,
+          // year: date.year,
+          year: 2021,
           month: date.month,
         },
       })
@@ -37,7 +41,7 @@ const MyDiaryList: React.FC = () => {
     setDate({ year, month })
   }
 
-  return <div />
+  return <Calendar />
 }
 
 export default MyDiaryList
