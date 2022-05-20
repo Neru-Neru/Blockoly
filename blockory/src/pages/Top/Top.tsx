@@ -1,20 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './Top.scss'
-
 import Topdish from 'img/top_dish.png'
 import Logo from 'img/logo.png'
 import Mayonnase from 'img/mayonnaise.png'
+import styles from './Top.module.scss'
 
 const Top: React.FC = () => (
   <div style={{ height: '100%' }}>
-    <div className="plate">
+    <div className={styles.plate}>
       <img src={Topdish} alt="top_dish" style={{ width: '100%' }} />
-      <div className="lightblue-circle">
+      <div className={styles.lightblueCircle}>
         <Link to="/howto">
-          <div className="content">
-            <p className="text">
+          <div className={styles.content}>
+            <p className={styles.text}>
               つかい
               <br />
               かた
@@ -22,10 +21,10 @@ const Top: React.FC = () => (
           </div>
         </Link>
       </div>
-      <div className="purple-circle">
+      <div className={styles.purpleCircle}>
         <Link to="/writingstep1">
-          <div className="content">
-            <p className="text">
+          <div className={styles.content}>
+            <p className={styles.text}>
               にっき
               <br />を<br />
               かく
@@ -33,10 +32,10 @@ const Top: React.FC = () => (
           </div>
         </Link>
       </div>
-      <div className="brown-circle">
+      <div className={styles.brownCircle}>
         <Link to="/mydiarylist">
-          <div className="content">
-            <p className="text">
+          <div className={styles.content}>
+            <p className={styles.text}>
               じぶん
               <br />の<br />
               にっき
@@ -44,10 +43,10 @@ const Top: React.FC = () => (
           </div>
         </Link>
       </div>
-      <div className="green-circle">
+      <div className={styles.greenCircle}>
         <Link to="/otherdiarylist">
-          <div className="content">
-            <p className="text">
+          <div className={styles.content}>
+            <p className={styles.text}>
               みんな
               <br />の<br />
               にっき
@@ -55,19 +54,19 @@ const Top: React.FC = () => (
           </div>
         </Link>
       </div>
-      <div className="red-circle">
+      <div className={styles.redCircle}>
         <Link to="/news">
-          <div className="content">
-            <p className="text">おしらせ</p>
+          <div className={styles.content}>
+            <p className={styles.text}>おしらせ</p>
           </div>
         </Link>
       </div>
     </div>
 
-    <div className="source">
+    <div className={styles.source}>
       <img src={Mayonnase} alt="mayonnaise" style={{ width: '100%' }} />
-      <div className="white-circle">
-        <div className="content">
+      <div className={styles.whiteCircle}>
+        <div className={styles.content}>
           <img
             src={Logo}
             alt="logo"
@@ -83,9 +82,9 @@ const Top: React.FC = () => (
       </div>
     </div>
 
-    <div className="note">
+    <div className={styles.note}>
       <h4>About</h4>
-      <p className="content">
+      <p className={styles.content}>
         「ぶろっこりー」は、日記を通してプログラミングを学ぶWebアプリケーションです。
         <br />
         <br />
