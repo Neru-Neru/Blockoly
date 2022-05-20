@@ -82,42 +82,42 @@
   }
 }
 
-.lightblue-circle {
+.lightblueCircle {
   @include circle(11%, 18.6%, 33.4%);
   .content {
     @include circleIn(#7abf66);
   }
 }
 
-.purple-circle {
+.purpleCircle {
   @include circle(11%, 31.5%, 52.2%);
   .content {
     @include circleIn(#988ccc);
   }
 }
 
-.brown-circle {
+.brownCircle {
   @include circle(11%, 35.5%, 66.8%);
   .content {
     @include circleIn(#40e0d0);
   }
 }
 
-.green-circle {
+.greenCircle {
   @include circle(11%, 61.3%, 64.4%);
   .content {
     @include circleIn(#d8a474);
   }
 }
 
-.red-circle {
+.redCircle {
   @include circle(11%, 46%, 82.3%);
   .content {
     @include circleIn(#fd7777);
   }
 }
 
-.white-circle {
+.whiteCircle {
   @include circle(60%, 68.5%, 50%);
   .content {
     @include circleIn(#fff);
