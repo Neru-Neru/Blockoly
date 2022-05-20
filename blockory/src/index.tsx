@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import PageWrapper from 'PageWrapper'
 import reportWebVitals from './reportWebVitals'
 
 import Top from './pages/Top/Top'
@@ -8,15 +9,19 @@ import MyDiaryList from './pages/MyDiaryList/MyDiaryList'
 import OtherDiaryList from './pages/OtherDiaryList/OtherDiaryList'
 import WritingDiaryStep1 from './pages/WritingDiaryStep1/WritingDiaryStep1'
 
+import './index.scss'
+
 const app = document.getElementById('root')
 ReactDOM.render(
   <Router>
-    <Routes>
-      <Route path="/" element={<Top />} />
-      <Route path="/mydiarylist" element={<MyDiaryList />} />
-      <Route path="/otherdiarylist" element={<OtherDiaryList />} />
-      <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
-    </Routes>
+    <PageWrapper>
+      <Routes>
+        <Route path="/" element={<Top />} />
+        <Route path="/mydiarylist" element={<MyDiaryList />} />
+        <Route path="/otherdiarylist" element={<OtherDiaryList />} />
+        <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
+      </Routes>
+    </PageWrapper>
   </Router>,
   app
 )
