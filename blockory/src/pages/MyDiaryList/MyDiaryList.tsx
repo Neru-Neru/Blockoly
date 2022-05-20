@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Calendar from 'components/Calendar/Calendar'
 
+import styles from './MyDiaryList.module.scss'
+
 type DiaryInfo = {
   diaryId: string
   title: string
@@ -41,7 +43,30 @@ const MyDiaryList: React.FC = () => {
     setDate({ year, month })
   }
 
-  return <Calendar />
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-5 p-3 h-100">
+          <div className="d-flex h-25 pt-5">
+            <div className={`border d-flex align-items-center justify-content-center bg-light ${styles.profile}`}>
+              <p className={styles.iconWrapper}>
+                {/* Icon */}
+                <i className="fas fa-glasses" />
+              </p>
+            </div>
+            <div className="mx-3">{/* Name */}</div>
+          </div>
+          <div className="h-75">
+            <Calendar />
+          </div>
+        </div>
+        <div className="col-7 p-3 h-100">
+          <h3 className={styles.title}>じぶんのにっき</h3>
+          {/* <DiaryList imageList={daylist} clickTile={clickTile} /> */}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default MyDiaryList

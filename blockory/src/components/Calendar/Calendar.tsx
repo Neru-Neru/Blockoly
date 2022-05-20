@@ -4,6 +4,8 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import allLocales from '@fullcalendar/core/locales-all'
 
+import './Calendar.scss'
+
 const Calendar: React.FC = () => {
   const events = [{ title: 'event1', start: '2022-05-01' }]
 
@@ -26,6 +28,7 @@ const Calendar: React.FC = () => {
       initialView="dayGridMonth"
       locales={allLocales}
       locale="ja"
+      height="auto"
       customButtons={{
         prevButton: { text: '<', click: onClickPrev },
         nextButton: { text: '>', click: onClickNext },
