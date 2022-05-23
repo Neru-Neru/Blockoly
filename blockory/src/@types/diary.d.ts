@@ -1,3 +1,11 @@
+type Diary = {
+  Title: string
+  Description: string
+  DiaryBody: string
+  ThumbnailBody: string
+  TargetDate: Date
+}
+
 type DiaryInfo = {
   diaryId: string
   title: string
