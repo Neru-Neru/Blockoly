@@ -18,7 +18,7 @@ const WritingDiaryStep2: React.FC<Props> = (props) => {
   })
 
   const registerDiary = async () => {
-    const result = await axios.post(`http://localhost:8080/DiaryInfo`, {
+    const result = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
       params: {
         DiaryCount: 1,
         Diaries: diary,

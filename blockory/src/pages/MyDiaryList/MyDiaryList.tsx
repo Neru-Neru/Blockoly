@@ -13,7 +13,7 @@ const MyDiaryList: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result: DiaryInfoList = await axios.get(`http://localhost:8080/DiaryInfo`, {
+      const result: DiaryInfoList = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
         params: {
           year: date.year,
           month: date.month,

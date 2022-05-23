@@ -5,3 +5,9 @@ declare module '*.scss' {
   const classNames: IClassNames
   export = classNames
 }
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    readonly REACT_APP_API_ENDPOINT: string
+  }
+}

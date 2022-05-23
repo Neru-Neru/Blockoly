@@ -44,7 +44,7 @@ const Signin: React.FC = () => {
     }
     try {
       // TODO: confirm to the response when get login API method
-      const res: UserInfo = await axios.get(`url`, {
+      const res: UserInfo = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/AuthUserInfo`, {
         params: {},
       })
       navigate('/')
