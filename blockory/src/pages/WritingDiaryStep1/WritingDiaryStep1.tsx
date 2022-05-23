@@ -10,13 +10,6 @@ interface IndexableInterface {
   // To avoid error about bracket string
   [key: string]: any
 }
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      xml: any
-    }
-  }
-}
 
 const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
@@ -43,7 +36,7 @@ const WritingDiaryStep1: React.FC = () => {
       <div className="row h-100">
         <div className="col-md-7 h-100">
           <Editor setDiaryCode={setDiaryCode} setBlock={setBlock} />
-          <div className="pt-3 h-25">
+          <div className="h-25 pt-3">
             <Note diaryCode={diaryCode} />
           </div>
         </div>
