@@ -6,8 +6,12 @@ import allLocales from '@fullcalendar/core/locales-all'
 
 import './Calendar.scss'
 
-const Calendar: React.FC = () => {
-  const events = [{ title: 'event1', start: '2022-05-01' }]
+type Props = {
+  diaryInfoList: DiaryInfo[] | undefined
+}
+
+const Calendar: React.FC<Props> = (props) => {
+  const { diaryInfoList } = props
 
   const calendarRef = useRef<FullCalendar>(null!)
 
@@ -39,7 +43,7 @@ const Calendar: React.FC = () => {
         center: 'title',
         end: 'prevButton today nextButton',
       }}
-      events={events}
+      events={diaryInfoList}
       showNonCurrentDates={false}
     />
   )
