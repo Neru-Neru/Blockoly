@@ -15,7 +15,8 @@ const MyDiaryList: React.FC = () => {
     const fetchData = async () => {
       const result: DiaryInfoList = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
         params: {
-          year: date.year,
+          // year: date.year,
+          year: 2021,
           month: date.month,
         },
       })
@@ -47,7 +48,7 @@ const MyDiaryList: React.FC = () => {
         </div>
         <div className="col-7 h-100 p-3">
           <h3 className={styles.title}>じぶんのにっき</h3>
-          {/* <DiaryList imageList={daylist} clickTile={clickTile} /> */}
+          {/* <DiaryList diaryInfoList={daylist} clickThumbnail={clickTile} /> */}
         </div>
       </div>
     </div>

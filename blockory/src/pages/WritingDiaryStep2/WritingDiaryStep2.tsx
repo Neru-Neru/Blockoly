@@ -10,11 +10,11 @@ const WritingDiaryStep2: React.FC<Props> = (props) => {
   const { diaryBody, targetDate } = props
 
   const [diary, setDiary] = useState<Diary>({
-    Title: '',
-    Description: '',
-    DiaryBody: diaryBody,
-    ThumbnailBody: '',
-    TargetDate: targetDate,
+    title: '',
+    description: '',
+    diaryBody,
+    thumbnailBody: '',
+    targetDate,
   })
 
   const registerDiary = async () => {
