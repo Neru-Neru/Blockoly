@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PageWrapper from 'PageWrapper'
+import Diary from 'pages/Diary/Diary'
 import reportWebVitals from './reportWebVitals'
 
 import Top from './pages/Top/Top'
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="/mydiarylist" element={<MyDiaryList />} />
         <Route path="/otherdiarylist" element={<OtherDiaryList />} />
         <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
+        <Route path="/diary" element={<Diary />} />
       </Routes>
     </PageWrapper>
   </Router>,
