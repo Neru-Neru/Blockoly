@@ -1,9 +1,9 @@
 type Diary = {
-  Title: string
-  Description: string
-  DiaryBody: string
-  ThumbnailBody: string
-  TargetDate: Date
+  title: string
+  description: string
+  diaryBody: string
+  thumbnailBody: string
+  targetDate: Date
 }
 
 type DiaryInfo = {
@@ -12,7 +12,10 @@ type DiaryInfo = {
   writerId: string
   writerName: string
   description: string
+  diaryBody: string
   thumbnailBody: string
+  targetDate: Date
+  updateDate: Date
 }
 
 type DiaryInfoList = {
