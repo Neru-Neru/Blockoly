@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-  diaryBody: string
+  diaryBody: string[][]
 }
 
 const DiaryBody: React.FC<Props> = (props) => {
@@ -9,7 +9,8 @@ const DiaryBody: React.FC<Props> = (props) => {
 
   return (
     <>
-      {diaryBody.split('\n').map((line) => (
+      {/* TODO : Fix to map function */}
+      {diaryBody[0][0].split('\n').map((line) => (
         <p>
           {line}
           <br />

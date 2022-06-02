@@ -3,8 +3,12 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Editor from 'pages/WritingDiaryStep1/Editor/Editor'
-import styles from './WritingDiaryStep1.module.scss'
+import FlatButton from 'components/FlatButton/FlatButton'
 import Note from './Note/Note'
+
+import styles from './WritingDiaryStep1.module.scss'
+import Procedure from './Procedure/Procedure'
+import ToStep2Button from './ToStep2Button/ToStep2Button'
 
 interface IndexableInterface {
   // To avoid error about bracket string
@@ -14,6 +18,8 @@ interface IndexableInterface {
 const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
   const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
+
+  const navigate = useNavigate()
 
   // const hideDescButton = () => {
   //   const afterDownloadText = document.getElementById('after_download')
@@ -31,6 +37,10 @@ const WritingDiaryStep1: React.FC = () => {
   //   }
   // }, [xml])
 
+  const navigateToStep2 = () => {
+    navigate('/writingstep2', { state: { block } })
+  }
+
   return (
     <div className="container">
       <div className="row h-100">
@@ -40,7 +50,18 @@ const WritingDiaryStep1: React.FC = () => {
             <Note diaryCode={diaryCode} />
           </div>
         </div>
-        <div className="col-md-5 h-100" />
+        <div className="col-md-5 h-100">
+          <Procedure />
+          <div className="row border py-3 h-50">
+            {/* <Movie
+            clickEvent={getQueryStrings}
+            handleDisplay={checkDouwnloadLink}
+            hideDescBtn={hideDescBtn}
+            username={username}
+          ></Movie> */}
+          </div>
+          <ToStep2Button onClick={navigateToStep2} />
+        </div>
       </div>
     </div>
   )
