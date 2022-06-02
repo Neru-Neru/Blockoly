@@ -21,7 +21,7 @@ ReactDOM.render(
         <Route path="/mydiarylist" element={<MyDiaryList />} />
         <Route path="/otherdiarylist" element={<OtherDiaryList />} />
         <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
-        <Route path="/diary" element={<Diary />} />
+        <Route path="/diary-content" element={<Diary />} />
       </Routes>
     </PageWrapper>
   </Router>,
