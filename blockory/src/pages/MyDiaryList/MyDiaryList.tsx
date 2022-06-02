@@ -3,27 +3,31 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Calendar from 'components/Calendar/Calendar'
+import ThumbnailList from 'components/ThumbnailList/ThumbnailList'
 
 import styles from './MyDiaryList.module.scss'
 
 const MyDiaryList: React.FC = () => {
   const today = new Date()
   const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() })
-  const [diaryInfoList, setDiaryInfoList] = useState<DiaryInfo[]>()
+  const [diaryInfoList, setDiaryInfoList] = useState<DiaryInfoList>()
 
   useEffect(() => {
     const fetchData = async () => {
-      const result: DiaryInfoList = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
+      const res = await axios.get<DiaryInfoList>(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
         params: {
           // year: date.year,
           year: 2021,
           month: date.month,
         },
       })
-      setDiaryInfoList(result.items)
+      const result: DiaryInfoList = res.data
+      setDiaryInfoList(result)
     }
     fetchData()
   }, [date])
+
+  console.log('mydiary', diaryInfoList)
 
   const pickDateOnCalendar = (year: number, month: number) => {
     setDate({ year, month })
@@ -48,7 +52,7 @@ const MyDiaryList: React.FC = () => {
         </div>
         <div className="col-7 h-100 p-3">
           <h3 className={styles.title}>じぶんのにっき</h3>
-          {/* <DiaryList diaryInfoList={daylist} clickThumbnail={clickTile} /> */}
+          <ThumbnailList diaryInfoList={diaryInfoList} />
         </div>
       </div>
     </div>

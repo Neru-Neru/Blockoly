@@ -9,7 +9,7 @@ import ListSubheader from '@mui/material/ListSubheader'
 import IconButton from '@mui/material/IconButton'
 
 type Props = {
-  diaryInfoList: DiaryInfoList
+  diaryInfoList: DiaryInfoList | undefined
 }
 
 const ThumbnailList: React.FC<Props> = (props) => {
@@ -27,27 +27,28 @@ const ThumbnailList: React.FC<Props> = (props) => {
       <ImageListItem key="Subheader" cols={3}>
         <ListSubheader component="div">にっきリスト</ListSubheader>
       </ImageListItem>
-      {diaryInfoList.items.map((item: DiaryInfo) => (
-        <ImageListItem
-          key={item.diaryId}
-          onClick={() => {
-            clickThumbnail(item)
-          }}
-        >
-          <img
-            src={`data:image/png;${item.thumbnailBody}?w=248&fit=crop&auto=format`}
-            srcSet={`data:image/png;${item.thumbnailBody}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title={item.title}
-            actionIcon={
-              <IconButton sx={{ color: 'rgba(255, 255, 255, 0.54)' }} aria-label={`info about ${item.title}`} />
-            }
-          />
-        </ImageListItem>
-      ))}
+      {diaryInfoList &&
+        diaryInfoList.Diaries.map((item: DiaryInfo) => (
+          <ImageListItem
+            key={item.DiaryId}
+            onClick={() => {
+              clickThumbnail(item)
+            }}
+          >
+            <img
+              src={`data:image/png;${item.ThumbnailBody}?w=248&fit=crop&auto=format`}
+              srcSet={`data:image/png;${item.ThumbnailBody}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt=""
+              loading="lazy"
+            />
+            <ImageListItemBar
+              title={item.Title}
+              actionIcon={
+                <IconButton sx={{ color: 'rgba(255, 255, 255, 0.54)' }} aria-label={`info about ${item.Title}`} />
+              }
+            />
+          </ImageListItem>
+        ))}
     </ImageList>
   )
 }
