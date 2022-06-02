@@ -1581,6 +1581,7 @@
     prop-types "^15.8.1"
 
 "@mui/styled-engine-sc@^5.8.0", "@mui/styled-engine@^5.8.0", "@mui/styled-engine@npm:@mui/styled-engine-sc@latest":
+  name "@mui/styled-engine"
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/@mui/styled-engine-sc/-/styled-engine-sc-5.8.0.tgz#20bc536dce25739e38fcd2586f100e70fbf02065"
   integrity sha512-46eRLWxjTF0d50Q1Q9tj96cgF41r7lesbXAy6kKocCdUfJ8rbIo36C4Ws8Pd7nfVsvaitTb7tmCbVQzDT3niJQ==
@@ -3404,7 +3405,7 @@ cliui@^7.0.2:
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
 
-clsx@^1.1.0, clsx@^1.1.1:
+clsx@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/clsx/-/clsx-1.1.1.tgz"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -8089,7 +8090,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -8329,14 +8330,6 @@ react-scripts@^5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
-
-react-tabs@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/react-tabs/-/react-tabs-4.2.1.tgz"
-  integrity sha512-nQcEN3KrAsSry6f9Jz2oyMQsnh+sLEy31YjlskL/mnI3KU/c7BeyD1VzHZmmcJ15UEFu12pYOXYkdTzZ0uyIbw==
-  dependencies:
-    clsx "^1.1.0"
-    prop-types "^15.5.0"
 
 react-transition-group@^4.4.2:
   version "4.4.2"
