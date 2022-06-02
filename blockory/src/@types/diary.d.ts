@@ -1,7 +1,7 @@
 type Diary = {
   Title: string
   Description: string
-  DiaryBody: string
+  DiaryBody: string[][]
   ThumbnailBody: string
   TargetDate: Date
 }
@@ -12,7 +12,7 @@ type DiaryInfo = {
   WriterId: string
   WriterName: string
   Description: string
-  DiaryBody: string
+  DiaryBody: string[][]
   ThumbnailBody: string
   TargetDate: Date
   UpdateDate: Date

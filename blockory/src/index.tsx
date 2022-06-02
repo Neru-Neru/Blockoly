@@ -9,6 +9,7 @@ import Top from './pages/Top/Top'
 import MyDiaryList from './pages/MyDiaryList/MyDiaryList'
 import OtherDiaryList from './pages/OtherDiaryList/OtherDiaryList'
 import WritingDiaryStep1 from './pages/WritingDiaryStep1/WritingDiaryStep1'
+import WritingDiaryStep2 from './pages/WritingDiaryStep2/WritingDiaryStep2'
 
 import './index.scss'
 
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="/mydiarylist" element={<MyDiaryList />} />
         <Route path="/otherdiarylist" element={<OtherDiaryList />} />
         <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
+        <Route path="/writingstep2" element={<WritingDiaryStep2 />} />
         <Route path="/diary-content" element={<Diary />} />
       </Routes>
     </PageWrapper>
