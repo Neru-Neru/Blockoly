@@ -7,7 +7,7 @@ import allLocales from '@fullcalendar/core/locales-all'
 import './Calendar.scss'
 
 type Props = {
-  diaryInfoList: DiaryInfo[] | undefined
+  diaryInfoList: DiaryInfoList | undefined
 }
 
 const Calendar: React.FC<Props> = (props) => {
@@ -23,6 +23,14 @@ const Calendar: React.FC<Props> = (props) => {
   const onClickNext = () => {
     const calendarApi = calendarRef.current.getApi()
     calendarApi.next()
+  }
+
+  const generateEvent = (_diaryInfoList: DiaryInfoList | undefined) => {
+    const events = _diaryInfoList?.Diaries.map((diary: DiaryInfo) => ({
+      start: diary.TargetDate,
+      title: diary.Title,
+    }))
+    return events
   }
 
   return (
@@ -43,7 +51,7 @@ const Calendar: React.FC<Props> = (props) => {
         center: 'title',
         end: 'prevButton today nextButton',
       }}
-      events={diaryInfoList}
+      events={generateEvent(diaryInfoList)}
       showNonCurrentDates={false}
     />
   )
