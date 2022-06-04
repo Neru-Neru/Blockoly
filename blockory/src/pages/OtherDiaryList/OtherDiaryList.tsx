@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 
 import Calendar from 'components/Calendar/Calendar'
 import ThumbnailList from 'components/ThumbnailList/ThumbnailList'
@@ -8,8 +9,19 @@ import ThumbnailList from 'components/ThumbnailList/ThumbnailList'
 import styles from './OtherDiaryList.module.scss'
 
 const OtherDiaryList: React.FC = () => {
+  const location = useLocation()
+
+  const getDate = () => {
+    if (location.state) {
+      const state = location.state as { date: string }
+      const splittedDate = state.date.split('-')
+      return { year: Number(splittedDate[0]), month: Number(splittedDate[1]) }
+    }
+    return { year: today.getFullYear(), month: today.getMonth() + 1 }
+  }
+
   const today = new Date()
-  const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() + 1 })
+  const [date, setDate] = useState(getDate())
   const [diaryInfoList, setDiaryInfoList] = useState<DiaryInfoList>()
 
   useEffect(() => {

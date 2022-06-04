@@ -46,6 +46,7 @@ const Calendar: React.FC<Props> = (props) => {
     <FullCalendar
       ref={calendarRef}
       plugins={[dayGridPlugin]}
+      initialDate={`${String(date.year)}-${String(`0${date.month}`).slice(-2)}-01`}
       initialView="dayGridMonth"
       locales={allLocales}
       locale="ja"

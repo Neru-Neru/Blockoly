@@ -9,13 +9,13 @@ const Diary: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const state = location.state as { diary: DiaryInfo }
-  const { diary } = state
+  const state = location.state as { diary: DiaryInfo; prev: string }
+  const { diary, prev } = state
 
   console.log('Diary', diary)
 
   const backPage = () => {
-    navigate(-1)
+    navigate(prev, { state: { date: diary.TargetDate } })
   }
 
   return (

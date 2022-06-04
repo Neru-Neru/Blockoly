@@ -5,12 +5,26 @@ import axios from 'axios'
 import Calendar from 'components/Calendar/Calendar'
 import ThumbnailList from 'components/ThumbnailList/ThumbnailList'
 
+import { useLocation } from 'react-router-dom'
 import styles from './MyDiaryList.module.scss'
 
 const MyDiaryList: React.FC = () => {
+  const location = useLocation()
+
+  const getDate = () => {
+    if (location.state) {
+      const state = location.state as { date: string }
+      const splittedDate = state.date.split('-')
+      return { year: Number(splittedDate[0]), month: Number(splittedDate[1]) }
+    }
+    return { year: today.getFullYear(), month: today.getMonth() + 1 }
+  }
+
   const today = new Date()
-  const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() + 1 })
+  const [date, setDate] = useState(getDate())
   const [diaryInfoList, setDiaryInfoList] = useState<DiaryInfoList>()
+
+  console.log(date)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +33,6 @@ const MyDiaryList: React.FC = () => {
           year: date.year,
           // year: 2021,
           month: date.month,
-          writerId: '',
         },
       })
       const result: DiaryInfoList = res.data

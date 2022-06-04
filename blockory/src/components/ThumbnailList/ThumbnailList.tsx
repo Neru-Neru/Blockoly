@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
@@ -16,10 +16,11 @@ const ThumbnailList: React.FC<Props> = (props) => {
   const { diaryInfoList } = props
 
   const navigate = useNavigate()
+  const location = useLocation()
 
   const clickThumbnail = (item: DiaryInfo) => {
     // Go to Diary content page with item(:DiaryInfo)
-    navigate('/diary-content', { state: { diary: item } })
+    navigate('/diary-content', { state: { diary: item, prev: location.pathname } })
   }
 
   return (
