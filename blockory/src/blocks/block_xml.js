@@ -401,55 +401,55 @@ export const Categories = {
       contents: [
         {
           kind: 'block',
-          type: '.getup',
+          type: 'getup',
         },
         {
           kind: 'block',
-          type: '.sleep',
+          type: 'sleep',
         },
         {
           kind: 'block',
-          type: '.run',
+          type: 'run',
         },
         {
           kind: 'block',
-          type: '.eat',
+          type: 'eat',
         },
         {
           kind: 'block',
-          type: '.play',
+          type: 'play',
         },
         {
           kind: 'block',
-          type: '.ride',
+          type: 'ride',
         },
         {
           kind: 'block',
-          type: '.cook',
+          type: 'cook',
         },
         {
           kind: 'block',
-          type: '.buy',
+          type: 'buy',
         },
         {
           kind: 'block',
-          type: '.practice',
+          type: 'practice',
         },
         {
           kind: 'block',
-          type: '.watch',
+          type: 'watch',
         },
         {
           kind: 'block',
-          type: '.draw',
+          type: 'draw',
         },
         {
           kind: 'block',
-          type: '.make',
+          type: 'make',
         },
         {
           kind: 'block',
-          type: '.study',
+          type: 'study',
         },
       ],
     },

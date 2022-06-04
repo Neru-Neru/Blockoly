@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import FlatButton from 'components/FlatButton/FlatButton'
 import DescriptionForm from './DescriptionForm/DescriptionForm'
@@ -7,8 +7,11 @@ import DescriptionForm from './DescriptionForm/DescriptionForm'
 const WritingDiaryStep2: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const state = location.state as { block: { element: string[]; action: string[] } }
-  const { block } = state
+
+  const getDiaryBody = () => {
+    const state = location.state as { block: { element: string[]; action: string[] } }
+    return [state.block.action, state.block.element]
+  }
 
   const today = new Date()
 
@@ -17,7 +20,7 @@ const WritingDiaryStep2: React.FC = () => {
   const [diary, setDiary] = useState<Diary>({
     Title: '',
     Description: '',
-    DiaryBody: [block.action, block.element],
+    DiaryBody: [[''], ['']],
     ThumbnailBody: '',
     TargetDate: today,
   })
@@ -25,6 +28,7 @@ const WritingDiaryStep2: React.FC = () => {
   const registerDiary = async () => {
     diary.Title = title
     diary.Description = description
+    diary.DiaryBody = getDiaryBody()
     diary.ThumbnailBody = ''
 
     try {
@@ -35,11 +39,11 @@ const WritingDiaryStep2: React.FC = () => {
         },
       })
     } catch (error) {
-      console.log(error)
+      console.log('error', error)
     }
   }
 
-  console.log(block, diary)
+  console.log(diary)
 
   return (
     <div className="container">
