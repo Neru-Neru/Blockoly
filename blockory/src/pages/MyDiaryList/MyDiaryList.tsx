@@ -19,6 +19,7 @@ const MyDiaryList: React.FC = () => {
           year: date.year,
           // year: 2021,
           month: date.month,
+          writerId: '',
         },
       })
       const result: DiaryInfoList = res.data
