@@ -1,10 +1,19 @@
+# Getting Started
+
+   ```
+   npm install
+   ```
+   or
+   ```
+   yarn install
+   ```
+
 # Getting Started with Docker
 
 1. Go to `/blockory` and run below.
 
    ```
    docker-compose up
-
    ```
 
 2. You'll see that `react-scripts start` command starts.
