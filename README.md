@@ -1,11 +1,21 @@
 # Getting Started
 
+1. Go to `/blockory` and install packages.
+
    ```
    npm install
    ```
    or
    ```
    yarn install
+   ```
+2. Start develop server.
+    ```
+   npm run start
+   ```
+   or
+   ```
+   yarn start
    ```
 
 # Getting Started with Docker
