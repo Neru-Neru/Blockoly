@@ -27,10 +27,10 @@ const MyDiaryList: React.FC = () => {
     fetchData()
   }, [date])
 
-  console.log('mydiary', diaryInfoList)
+  console.log({ mydiary: diaryInfoList })
 
-  const pickDateOnCalendar = (year: number, month: number) => {
-    setDate({ year, month })
+  const pickDateOnCalendar = (year: number, month: number, _date: number) => {
+    console.log(year, month, _date)
   }
 
   return (

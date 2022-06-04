@@ -16,8 +16,7 @@ const OtherDiaryList: React.FC = () => {
     const fetchData = async () => {
       const res = await axios.get<DiaryInfoList>(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
         params: {
-          // year: date.year,
-          year: 2021,
+          year: date.year,
           month: date.month,
         },
       })
