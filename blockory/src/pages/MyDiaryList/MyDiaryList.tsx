@@ -9,15 +9,15 @@ import styles from './MyDiaryList.module.scss'
 
 const MyDiaryList: React.FC = () => {
   const today = new Date()
-  const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() })
+  const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() + 1 })
   const [diaryInfoList, setDiaryInfoList] = useState<DiaryInfoList>()
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get<DiaryInfoList>(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
         params: {
-          // year: date.year,
-          year: 2021,
+          year: date.year,
+          // year: 2021,
           month: date.month,
         },
       })
@@ -47,7 +47,7 @@ const MyDiaryList: React.FC = () => {
             <div className="mx-3">{/* Name */}</div>
           </div>
           <div className="h-75">
-            <Calendar diaryInfoList={diaryInfoList} />
+            <Calendar diaryInfoList={diaryInfoList} date={date} setDate={setDate} />
           </div>
         </div>
         <div className="col-7 h-100 p-3">

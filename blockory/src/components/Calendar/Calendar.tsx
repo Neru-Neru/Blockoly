@@ -8,21 +8,30 @@ import './Calendar.scss'
 
 type Props = {
   diaryInfoList: DiaryInfoList | undefined
+  date: { year: number; month: number }
+  setDate: React.Dispatch<
+    React.SetStateAction<{
+      year: number
+      month: number
+    }>
+  >
 }
 
 const Calendar: React.FC<Props> = (props) => {
-  const { diaryInfoList } = props
+  const { diaryInfoList, date, setDate } = props
 
   const calendarRef = useRef<FullCalendar>(null!)
 
   const onClickPrev = () => {
     const calendarApi = calendarRef.current.getApi()
     calendarApi.prev()
+    setDate({ year: calendarApi.getDate().getFullYear(), month: calendarApi.getDate().getMonth() + 1 })
   }
 
   const onClickNext = () => {
     const calendarApi = calendarRef.current.getApi()
     calendarApi.next()
+    setDate({ year: calendarApi.getDate().getFullYear(), month: calendarApi.getDate().getMonth() + 1 })
   }
 
   const generateEvent = (_diaryInfoList: DiaryInfoList | undefined) => {

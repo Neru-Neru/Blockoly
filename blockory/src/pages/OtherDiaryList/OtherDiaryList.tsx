@@ -9,7 +9,7 @@ import styles from './OtherDiaryList.module.scss'
 
 const OtherDiaryList: React.FC = () => {
   const today = new Date()
-  const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() })
+  const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() + 1 })
   const [diaryInfoList, setDiaryInfoList] = useState<DiaryInfoList>()
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const OtherDiaryList: React.FC = () => {
             <div className="mx-3">{/* Name */}</div>
           </div>
           <div className="h-75">
-            <Calendar diaryInfoList={diaryInfoList} />
+            <Calendar diaryInfoList={diaryInfoList} date={date} setDate={setDate} />
           </div>
         </div>
         <div className="col-7 h-100 p-3">
