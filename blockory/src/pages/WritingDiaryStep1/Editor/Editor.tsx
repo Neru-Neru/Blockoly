@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react'
+import React, { useState, Dispatch, SetStateAction, forwardRef, useImperativeHandle } from 'react'
 
 import Blockly from 'blockly'
 import { BlocklyWorkspace } from 'react-blockly'
@@ -33,7 +33,11 @@ type Props = {
   >
 }
 
-const Editor: React.FC<Props> = (props) => {
+type Handler = {
+  xmlToList: () => { element: string[]; action: string[] }
+}
+
+const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
   const [xml, setXml] = useState('')
   //  --- Construction of xml ---
   //  <xml xmlns="https://developers.google.com/blockly/xml">
@@ -62,26 +66,28 @@ const Editor: React.FC<Props> = (props) => {
     setDiaryCode(code)
   }
 
-  const xmlToList = () => {
-    const actions: string[] = []
-    const elements: string[] = []
+  useImperativeHandle(ref, () => ({
+    xmlToList: () => {
+      const actions: string[] = []
+      const elements: string[] = []
 
-    const dpObj = new DOMParser()
-    const xmlDoc = dpObj.parseFromString(xml, 'text/xml')
-    const blockTags = xmlDoc.querySelectorAll('xml > block')
+      const dpObj = new DOMParser()
+      const xmlDoc = dpObj.parseFromString(xml, 'text/xml')
+      const blockTags = xmlDoc.querySelectorAll('xml > block')
 
-    blockTags.forEach((block) => {
-      const element = block.getAttribute('type')
-      if (element) elements.push(element)
-      if (block.hasChildNodes()) {
-        const action = block.querySelector('block')?.getAttribute('type')
-        if (action) actions.push(action)
-      } else {
-        actions.push('')
-      }
-    })
-    setBlock({ element: elements, action: actions })
-  }
+      blockTags.forEach((block) => {
+        const element = block.getAttribute('type')
+        if (element) elements.push(element)
+        if (block.hasChildNodes()) {
+          const action = block.querySelector('block')?.getAttribute('type')
+          if (action) actions.push(action)
+        } else {
+          actions.push('')
+        }
+      })
+      return { element: elements, action: actions }
+    },
+  }))
 
   return (
     <BlocklyWorkspace
@@ -93,4 +99,4 @@ const Editor: React.FC<Props> = (props) => {
   )
 }
 
-export default Editor
+export default React.forwardRef(Editor)

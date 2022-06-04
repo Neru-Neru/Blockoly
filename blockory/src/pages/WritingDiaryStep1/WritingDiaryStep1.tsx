@@ -15,11 +15,16 @@ interface IndexableInterface {
   [key: string]: any
 }
 
+type Handler = {
+  xmlToList: () => { element: string[]; action: string[] }
+}
+
 const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
   const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
 
   const navigate = useNavigate()
+  const ref = React.useRef<Handler>(null)
 
   // const hideDescButton = () => {
   //   const afterDownloadText = document.getElementById('after_download')
@@ -38,14 +43,17 @@ const WritingDiaryStep1: React.FC = () => {
   // }, [xml])
 
   const navigateToStep2 = () => {
-    navigate('/writingstep2', { state: { block } })
+    if (ref.current) {
+      const blocks = ref.current?.xmlToList()
+      navigate('/writingstep2', { state: { block: blocks } })
+    }
   }
 
   return (
     <div className="container">
       <div className="row h-100">
         <div className="col-md-7 h-100">
-          <Editor setDiaryCode={setDiaryCode} setBlock={setBlock} />
+          <Editor ref={ref} setDiaryCode={setDiaryCode} setBlock={setBlock} />
           <div className="h-25 pt-3">
             <Note diaryCode={diaryCode} />
           </div>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import FlatButton from 'components/FlatButton/FlatButton'
 import DescriptionForm from './DescriptionForm/DescriptionForm'
 
 const WritingDiaryStep2: React.FC = () => {
+  const navigate = useNavigate()
   const location = useLocation()
   const state = location.state as { block: { element: string[]; action: string[] } }
   const { block } = state
@@ -22,16 +23,20 @@ const WritingDiaryStep2: React.FC = () => {
   })
 
   const registerDiary = async () => {
-    const result = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
-      params: {
-        DiaryCount: 1,
-        Diaries: diary,
-      },
-    })
-  }
+    diary.Title = title
+    diary.Description = description
+    diary.ThumbnailBody = ''
 
-  const handleClick = () => {
-    // にっきをかくボタン
+    try {
+      const res = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
+        params: {
+          DiaryCount: 1,
+          Diaries: diary,
+        },
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -49,7 +54,16 @@ const WritingDiaryStep2: React.FC = () => {
             {/* <iframe src="http://127.0.0.1:5500/make_thumbnail.html" scrolling="no" width="100%" height="100%"></iframe> */}
           </div>
           <div className="d-grid gap-2 col-4 mx-auto w-100">
-            <FlatButton text="にっきをかく" className="btn btn-secondary" onClick={handleClick} />
+            <FlatButton
+              text="にっきをかく"
+              className="btn btn-secondary"
+              onClick={() => {
+                ;(async () => {
+                  await registerDiary()
+                })()
+                navigate('./')
+              }}
+            />
           </div>
         </div>
       </div>
