@@ -14,7 +14,7 @@ const DescriptionForm: React.FC<Props> = (props) => {
     changeTitle(event.target.value)
   }
 
-  const onChangeDescription = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     changeDescription(event.target.value)
   }
 
@@ -34,14 +34,15 @@ const DescriptionForm: React.FC<Props> = (props) => {
       </label>
       <label className="control-label w-100" htmlFor="desc">
         せつめい
-        <input
+        <textarea
           className="form-control"
           id="desc"
-          type="text"
           value={description}
           onChange={onChangeDescription}
           autoComplete="off"
           required
+          rows={5}
+          style={{ resize: 'none' }}
         />
       </label>
     </>

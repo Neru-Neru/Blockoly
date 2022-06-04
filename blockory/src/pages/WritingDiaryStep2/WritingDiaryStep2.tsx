@@ -39,6 +39,8 @@ const WritingDiaryStep2: React.FC = () => {
     }
   }
 
+  console.log(block, diary)
+
   return (
     <div className="container">
       <div className="row h-100">
