@@ -1,6 +1,6 @@
 import Blockly from 'blockly'
 
-Blockly.Blocks['.run'] = {
+Blockly.Blocks.run = {
   init() {
     this.appendDummyInput().appendField('さんぽする')
     this.setInputsInline(false)
@@ -10,11 +10,11 @@ Blockly.Blocks['.run'] = {
   },
 }
 
-Blockly.JavaScript['.run'] = function (block) {
+Blockly.JavaScript.run = function (block) {
   const code = 'さんぽする'
   return code
 }
-Blockly.Blocks['.eat'] = {
+Blockly.Blocks.eat = {
   init() {
     this.appendDummyInput().appendField('をたべる')
     this.setInputsInline(false)
@@ -24,11 +24,11 @@ Blockly.Blocks['.eat'] = {
   },
 }
 
-Blockly.JavaScript['.eat'] = function (block) {
+Blockly.JavaScript.eat = function (block) {
   const code = 'たべる'
   return code
 }
-Blockly.Blocks['.play'] = {
+Blockly.Blocks.play = {
   init() {
     this.appendDummyInput().appendField('であそぶ')
     this.setInputsInline(false)
@@ -38,11 +38,11 @@ Blockly.Blocks['.play'] = {
   },
 }
 
-Blockly.JavaScript['.play'] = function (block) {
+Blockly.JavaScript.play = function (block) {
   const code = 'であそぶ'
   return code
 }
-Blockly.Blocks['.ride'] = {
+Blockly.Blocks.ride = {
   init() {
     this.appendDummyInput().appendField('にのる')
     this.setInputsInline(false)
@@ -52,11 +52,11 @@ Blockly.Blocks['.ride'] = {
   },
 }
 
-Blockly.JavaScript['.ride'] = function (block) {
+Blockly.JavaScript.ride = function (block) {
   const code = 'にのる'
   return code
 }
-Blockly.Blocks['.cook'] = {
+Blockly.Blocks.cook = {
   init() {
     this.appendDummyInput().appendField('をりょうりする')
     this.setInputsInline(false)
@@ -66,11 +66,11 @@ Blockly.Blocks['.cook'] = {
   },
 }
 
-Blockly.JavaScript['.cook'] = function (block) {
+Blockly.JavaScript.cook = function (block) {
   const code = 'をりょうりする'
   return code
 }
-Blockly.Blocks['.getup'] = {
+Blockly.Blocks.getup = {
   init() {
     this.appendDummyInput().appendField('おきる')
     this.setInputsInline(false)
@@ -80,11 +80,11 @@ Blockly.Blocks['.getup'] = {
   },
 }
 
-Blockly.JavaScript['.getup'] = function (block) {
+Blockly.JavaScript.getup = function (block) {
   const code = 'おきる'
   return code
 }
-Blockly.Blocks['.sleep'] = {
+Blockly.Blocks.sleep = {
   init() {
     this.appendDummyInput().appendField('ねる')
     this.setInputsInline(false)
@@ -94,11 +94,11 @@ Blockly.Blocks['.sleep'] = {
   },
 }
 
-Blockly.JavaScript['.sleep'] = function (block) {
+Blockly.JavaScript.sleep = function (block) {
   const code = 'ねる'
   return code
 }
-Blockly.Blocks['.buy'] = {
+Blockly.Blocks.buy = {
   init() {
     this.appendDummyInput().appendField('をかう')
     this.setInputsInline(false)
@@ -108,11 +108,11 @@ Blockly.Blocks['.buy'] = {
   },
 }
 
-Blockly.JavaScript['.buy'] = function (block) {
+Blockly.JavaScript.buy = function (block) {
   const code = 'をかう'
   return code
 }
-Blockly.Blocks['.practice'] = {
+Blockly.Blocks.practice = {
   init() {
     this.appendDummyInput().appendField('をれんしゅうする')
     this.setInputsInline(false)
@@ -122,11 +122,11 @@ Blockly.Blocks['.practice'] = {
   },
 }
 
-Blockly.JavaScript['.practice'] = function (block) {
+Blockly.JavaScript.practice = function (block) {
   const code = 'をれんしゅうする'
   return code
 }
-Blockly.Blocks['.watch'] = {
+Blockly.Blocks.watch = {
   init() {
     this.appendDummyInput().appendField('をみる')
     this.setInputsInline(false)
@@ -136,11 +136,11 @@ Blockly.Blocks['.watch'] = {
   },
 }
 
-Blockly.JavaScript['.watch'] = function (block) {
+Blockly.JavaScript.watch = function (block) {
   const code = 'をみる'
   return code
 }
-Blockly.Blocks['.draw'] = {
+Blockly.Blocks.draw = {
   init() {
     this.appendDummyInput().appendField('をかく')
     this.setInputsInline(false)
@@ -150,11 +150,11 @@ Blockly.Blocks['.draw'] = {
   },
 }
 
-Blockly.JavaScript['.draw'] = function (block) {
+Blockly.JavaScript.draw = function (block) {
   const code = 'をえがく'
   return code
 }
-Blockly.Blocks['.make'] = {
+Blockly.Blocks.make = {
   init() {
     this.appendDummyInput().appendField('をつくる')
     this.setInputsInline(false)
@@ -164,11 +164,11 @@ Blockly.Blocks['.make'] = {
   },
 }
 
-Blockly.JavaScript['.make'] = function (block) {
+Blockly.JavaScript.make = function (block) {
   const code = 'をつくる'
   return code
 }
-Blockly.Blocks['.study'] = {
+Blockly.Blocks.study = {
   init() {
     this.appendDummyInput().appendField('べんきょうをする')
     this.setInputsInline(false)
@@ -178,7 +178,7 @@ Blockly.Blocks['.study'] = {
   },
 }
 
-Blockly.JavaScript['.study'] = function (block) {
+Blockly.JavaScript.study = function (block) {
   const code = 'べんきょうをする'
   return code
 }
