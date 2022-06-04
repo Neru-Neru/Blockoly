@@ -3,7 +3,7 @@ type Diary = {
   Description: string
   DiaryBody: string[][]
   ThumbnailBody: string
-  TargetDate: Date
+  TargetDate: Date | string
 }
 
 type DiaryInfo = {
@@ -14,8 +14,8 @@ type DiaryInfo = {
   Description: string
   DiaryBody: string[][]
   ThumbnailBody: string
-  TargetDate: Date
-  UpdateDate: Date
+  TargetDate: Date | string
+  UpdateDate: Date | string
 }
 
 type DiaryInfoList = {

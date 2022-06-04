@@ -8,42 +8,37 @@ const WritingDiaryStep2: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
+  const today = new Date()
+
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+
   const getDiaryBody = () => {
     const state = location.state as { block: { element: string[]; action: string[] } }
     return [state.block.action, state.block.element]
   }
 
-  const today = new Date()
-
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [diary, setDiary] = useState<Diary>({
-    Title: '',
-    Description: '',
-    DiaryBody: [[''], ['']],
-    ThumbnailBody: '',
-    TargetDate: today,
-  })
-
   const registerDiary = async () => {
-    diary.Title = title
-    diary.Description = description
-    diary.DiaryBody = getDiaryBody()
-    diary.ThumbnailBody = ''
+    const diary = {
+      Title: title,
+      Description: description,
+      DiaryBody: getDiaryBody(),
+      ThumbnailBody: '',
+      TargetDate: today,
+    }
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
+      await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
         params: {
           DiaryCount: 1,
           Diaries: diary,
         },
       })
+      navigate('/')
     } catch (error) {
-      console.log('error', error)
+      console.log(error)
     }
   }
-
-  console.log(diary)
 
   return (
     <div className="container">
