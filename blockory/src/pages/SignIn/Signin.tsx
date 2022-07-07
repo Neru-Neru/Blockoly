@@ -1,33 +1,29 @@
-import React, { useState, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { TextField, Button } from '@mui/material'
 import axios from 'axios'
-
-type UserInfo = {
-  UserId: string
-  UserName: string
-}
+import { AuthContext } from 'Authentication/AuthContext/AuthContext'
 
 const Signin: React.FC = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const { isLogin, setIsLogin, currentUser } = useContext<IAuthContext>(AuthContext)
 
   const navigate = useNavigate()
 
-  const inputUsername = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setUsername(event.target.value)
-    },
-    [setUsername]
-  )
+  const [userId, setUserId] = useState('')
+  const [password, setPassword] = useState('')
 
-  const inputEmail = useCallback(
+  const goTop = useCallback(() => navigate('/'), [navigate])
+
+  useEffect(() => {
+    if (isLogin) goTop()
+  }, [isLogin, goTop])
+
+  const inputUserId = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setEmail(event.target.value)
+      setUserId(event.target.value)
     },
-    [setEmail]
+    [setUserId]
   )
 
   const inputPassword = useCallback(
@@ -37,16 +33,20 @@ const Signin: React.FC = () => {
     [setPassword]
   )
 
-  const signIn = async (_username: string, _email: string, _password: string) => {
-    if (_username === '' || _email === '' || _password === '') {
+  const signIn = async (_userId: string, _password: string) => {
+    if (_userId === '' || _password === '') {
       alert('にゅうりょくしていないところがあるよ')
       return false
     }
     try {
       // TODO: confirm to the response when get login API method
       const res: UserInfo = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/AuthUserInfo`, {
-        params: {},
+        params: {
+          UserId: userId,
+          UserPassword: password,
+        },
       })
+      setIsLogin(true)
       navigate('/')
     } catch (error) {
       console.log(error)
@@ -61,8 +61,8 @@ const Signin: React.FC = () => {
           <h2 className="text-center">ログインがめん</h2>
         </div>
         <div className="my-3 mx-auto" style={{ width: '50%' }}>
-          <TextField fullWidth label="なまえ" margin="dense" type="text" value={username} onChange={inputUsername} />
-          <TextField fullWidth label="メールアドレス" margin="dense" type="email" value={email} onChange={inputEmail} />
+          <TextField fullWidth label="ユーザID" margin="dense" type="email" value={userId} onChange={inputUserId} />
+
           <TextField
             fullWidth
             label="パスワード"
@@ -77,7 +77,7 @@ const Signin: React.FC = () => {
               classes="text-center btn btn-primary"
               size="large"
               onClick={() => {
-                signIn(username, email, password)
+                signIn(userId, password)
               }}
             >
               ログインする

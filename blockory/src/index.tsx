@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PageWrapper from 'PageWrapper'
 import Diary from 'pages/Diary/Diary'
+import Signin from 'pages/SignIn/Signin'
+import Register from 'pages/Register/Register'
 import reportWebVitals from './reportWebVitals'
 
 import Top from './pages/Top/Top'
@@ -19,6 +21,8 @@ ReactDOM.render(
     <PageWrapper>
       <Routes>
         <Route path="/" element={<Top />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/mydiarylist" element={<MyDiaryList />} />
         <Route path="/otherdiarylist" element={<OtherDiaryList />} />
         <Route path="/writingstep1" element={<WritingDiaryStep1 />} />

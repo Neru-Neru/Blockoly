@@ -29,10 +29,8 @@ const WritingDiaryStep2: React.FC = () => {
 
     try {
       await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/DiaryInfo`, {
-        params: {
-          DiaryCount: 1,
-          Diaries: diary,
-        },
+        DiaryCount: 1,
+        Diaries: diary,
       })
       navigate('/')
     } catch (error) {
