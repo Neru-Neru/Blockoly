@@ -2,22 +2,23 @@ import React, { useState, useEffect, useCallback, useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { TextField, Button } from '@mui/material'
-import axios from 'axios'
-import { AuthContext } from 'Authentication/AuthContext/AuthContext'
+import axios, { AxiosResponse } from 'axios'
+import { LoggedInContext, AuthInfoContext } from 'Authentication/AuthContext/AuthContext'
 
-const Signin: React.FC = () => {
-  const { isLogin, setIsLogin, currentUser } = useContext<IAuthContext>(AuthContext)
-
+const SignIn: React.FC = () => {
   const navigate = useNavigate()
+
+  const isLogin = useContext(LoggedInContext)
+  const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
 
   const [userId, setUserId] = useState('')
   const [password, setPassword] = useState('')
 
-  const goTop = useCallback(() => navigate('/'), [navigate])
-
+  // ログイン状態であれば，トップページに戻す
+  const goTopPage = useCallback(() => navigate('/'), [navigate])
   useEffect(() => {
-    if (isLogin) goTop()
-  }, [isLogin, goTop])
+    if (isLogin) goTopPage()
+  }, [isLogin, goTopPage])
 
   const inputUserId = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,21 +34,25 @@ const Signin: React.FC = () => {
     [setPassword]
   )
 
-  const signIn = async (_userId: string, _password: string) => {
-    if (_userId === '' || _password === '') {
+  const signIn = async () => {
+    if (userId === '' || password === '') {
       alert('にゅうりょくしていないところがあるよ')
       return false
     }
     try {
-      // TODO: confirm to the response when get login API method
-      const res: UserInfo = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/AuthUserInfo`, {
-        params: {
-          UserId: userId,
-          UserPassword: password,
-        },
-      })
-      setIsLogin(true)
-      navigate('/')
+      await axios
+        .get(`${process.env.REACT_APP_API_ENDPOINT}/AuthUserInfo`, {
+          params: {
+            UserId: userId,
+            UserPassword: password,
+          },
+        })
+        .then((res: AxiosResponse<{ SessionId: string }>) => {
+          // レスポンスはセッションIDのみ
+          // TODO: ユーザIDの取得タイミング（GET/ UserInfo(sessionId)はその都度叩くか）
+          const { SessionId } = res.data
+          setAuthInfo({ UserName: '', SessionId })
+        })
     } catch (error) {
       console.log(error)
     }
@@ -77,7 +82,7 @@ const Signin: React.FC = () => {
               classes="text-center btn btn-primary"
               size="large"
               onClick={() => {
-                signIn(userId, password)
+                signIn()
               }}
             >
               ログインする
@@ -89,4 +94,4 @@ const Signin: React.FC = () => {
   )
 }
 
-export default Signin
+export default SignIn

@@ -61,6 +61,7 @@ module.exports = {
         extensions: ['.jsx', '.tsx'],
       },
     ],
+    'react/jsx-no-constructed-context-values': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-void': [
       'error',

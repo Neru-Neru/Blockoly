@@ -4,8 +4,7 @@ type UserInfo = {
   UserPassword: string
 }
 
-interface IAuthContext {
-  isLogin: boolean
-  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>
-  currentUser: UserInfo | null | undefined
+interface AuthInfo {
+  UserName: string
+  SessionId: string | undefined
 }

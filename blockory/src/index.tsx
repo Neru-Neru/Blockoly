@@ -3,33 +3,35 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PageWrapper from 'PageWrapper'
 import Diary from 'pages/Diary/Diary'
-import Signin from 'pages/SignIn/Signin'
+import SignIn from 'pages/SignIn/SignIn'
 import Register from 'pages/Register/Register'
-import reportWebVitals from './reportWebVitals'
-
+import { AuthContextProvider } from 'Authentication/AuthContext/AuthContext'
 import Top from './pages/Top/Top'
 import MyDiaryList from './pages/MyDiaryList/MyDiaryList'
 import OtherDiaryList from './pages/OtherDiaryList/OtherDiaryList'
 import WritingDiaryStep1 from './pages/WritingDiaryStep1/WritingDiaryStep1'
 import WritingDiaryStep2 from './pages/WritingDiaryStep2/WritingDiaryStep2'
 
+import reportWebVitals from './reportWebVitals'
 import './index.scss'
 
 const app = document.getElementById('root')
 ReactDOM.render(
   <Router>
-    <PageWrapper>
-      <Routes>
-        <Route path="/" element={<Top />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/mydiarylist" element={<MyDiaryList />} />
-        <Route path="/otherdiarylist" element={<OtherDiaryList />} />
-        <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
-        <Route path="/writingstep2" element={<WritingDiaryStep2 />} />
-        <Route path="/diary-content" element={<Diary />} />
-      </Routes>
-    </PageWrapper>
+    <AuthContextProvider>
+      <PageWrapper>
+        <Routes>
+          <Route path="/" element={<Top />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/mydiarylist" element={<MyDiaryList />} />
+          <Route path="/otherdiarylist" element={<OtherDiaryList />} />
+          <Route path="/writingstep1" element={<WritingDiaryStep1 />} />
+          <Route path="/writingstep2" element={<WritingDiaryStep2 />} />
+          <Route path="/diary-content" element={<Diary />} />
+        </Routes>
+      </PageWrapper>
+    </AuthContextProvider>
   </Router>,
   app
 )

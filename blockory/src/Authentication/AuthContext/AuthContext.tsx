@@ -1,24 +1,26 @@
 import React, { useMemo, useState, useEffect, useContext } from 'react'
 
-export const AuthContext = React.createContext<IAuthContext>({
-  isLogin: false,
-  setIsLogin: () => false,
-  currentUser: undefined,
-})
+// ログイン状態を管理するContext
+export const LoggedInContext = React.createContext<boolean>(false)
 
-export const AuthProvider: React.FC = ({ children }) => {
-  const a = useContext(AuthContext)
-  const [isLogin, setIsLogin] = useState(false)
-  const [currentUser, setCurrentUser] = useState<UserInfo | null | undefined>(undefined)
+// ログインユーザ情報を管理するContext
+export const AuthInfoContext = React.createContext<[AuthInfo, React.Dispatch<React.SetStateAction<AuthInfo>>]>([
+  { UserName: '', SessionId: '' },
+  () => {},
+])
+
+export const AuthContextProvider: React.FC = ({ children }) => {
+  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [authInfo, setAuthInfo] = useState<AuthInfo>({ UserName: '', SessionId: undefined })
 
   useEffect(() => {
-    if (!isLogin) setCurrentUser(undefined)
-  }, [isLogin])
+    if (authInfo?.SessionId) setIsLogin(true)
+    else setIsLogin(false)
+  }, [authInfo])
 
-  const authContextProviderValue = useMemo(
-    () => ({ currentUser, isLogin, setIsLogin }),
-    [currentUser, isLogin, setIsLogin]
+  return (
+    <LoggedInContext.Provider value={isLogin}>
+      <AuthInfoContext.Provider value={[authInfo, setAuthInfo]}>{children}</AuthInfoContext.Provider>
+    </LoggedInContext.Provider>
   )
-
-  return <AuthContext.Provider value={authContextProviderValue}>{children}</AuthContext.Provider>
 }

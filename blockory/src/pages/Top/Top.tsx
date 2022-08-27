@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { AuthContext } from 'Authentication/AuthContext/AuthContext'
+import { LoggedInContext, AuthInfoContext } from 'Authentication/AuthContext/AuthContext'
 
 import Topdish from 'img/top_dish.png'
 import Logo from 'img/logo.png'
@@ -9,9 +9,9 @@ import Mayonnase from 'img/mayonnaise.png'
 import styles from './Top.module.scss'
 
 const Top: React.FC = () => {
-  const { isLogin, setIsLogin, currentUser } = useContext<IAuthContext>(AuthContext)
-
   const navigate = useNavigate()
+  const isLogin = useContext(LoggedInContext)
+  const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
 
   const goSignIn = useCallback(() => navigate('/signin'), [navigate])
 
