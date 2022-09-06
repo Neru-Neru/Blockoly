@@ -1,0 +1,28 @@
+@mixin text($fontsize) {
+  position: absolute;
+  margin: 0;
+  font-size: $fontsize;
+  text-decoration: none;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 1120px) {
+    font-size: 8px;
+  }
+}
+
+.hover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.largeText {
+  @include text(16px);
+}
+
+.smallText {
+  @include text(12px);
+}

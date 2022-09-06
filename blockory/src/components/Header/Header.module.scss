@@ -1,16 +1,23 @@
 @mixin navbar($height) {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgb(138, 199, 222);
   position: absolute;
   width: 100%;
   height: $height;
 }
 
-@mixin nav-block($top, $left) {
+.largeHeader {
+  @include navbar(20%);
+}
+
+.smallHeader {
+  @include navbar(12%);
+}
+@mixin navBlock($top, $left) {
   height: 80%;
   position: absolute;
   transform: translate(-50%, -50%) rotateZ(0deg);
-  top: $top;
-  left: $left;
+  top: $top * 1%;
+  left: $left * 1%;
   z-index: 1;
   transition: all 0.75s ease-in-out;
   color: #222;
@@ -33,52 +40,44 @@
   }
 }
 
-.large-header {
-  @include navbar(20px);
-}
-
-.small-header {
-  @include navbar(12px);
-}
-
-.large-text {
+.largeText {
   @include text(16px);
 }
 
-.small-text {
+.smallText {
   @include text(12px);
 }
 
-.nav-block1 {
-  @include nav-block(50, 10);
+.navBlock1 {
+  @include navBlock(50, 10);
 }
 
-.nav-block2 {
-  @include nav-block(50, 20);
+.navBlock2 {
+  @include navBlock(50, 20);
 }
 
-.nav-block3 {
-  @include nav-block(50, 60);
+.navBlock3 {
+  @include navBlock(50, 60);
 }
 
-.nav-block4 {
-  @include nav-block(80, 70);
+.navBlock4 {
+  @include navBlock(80, 70);
 }
 
-.nav-block5 {
-  @include nav-block(50, 70);
+.navBlock5 {
+  @include navBlock(50, 70);
 }
 
-.nav-block6 {
-  @include nav-block(50, 80);
+.navBlock6 {
+  @include navBlock(50, 80);
 }
 
-.nav-block7 {
-  @include nav-block(80, 90);
+.navBlock7 {
+  @include navBlock(80, 90);
 }
 
-.nav-block8 {
-  @include nav-block(50, 90);
+.navBlock8 {
+  @include navBlock(50, 90);
 }
 
 .hover {

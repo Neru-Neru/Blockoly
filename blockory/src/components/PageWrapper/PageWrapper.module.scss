@@ -1,0 +1,16 @@
+.container {
+  height: 100%;
+  position: relative;
+  background-color: rgb(138, 199, 222);
+}
+
+.innerContainer {
+  width: 100%;
+  height: 85%;
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: rgb(138, 199, 222);
+  padding: 0px 10%;
+}
