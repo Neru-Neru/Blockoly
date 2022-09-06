@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { TextField, Button } from '@mui/material'
 import axios, { AxiosResponse } from 'axios'
@@ -34,30 +34,29 @@ const SignIn: React.FC = () => {
     [setPassword]
   )
 
-  const signIn = async () => {
-    if (userId === '' || password === '') {
+  const validatePassword = useCallback(() => userId.length > 0 && password.length > 0, [userId, password])
+
+  const signIn = useCallback(() => {
+    if (!validatePassword()) {
       alert('にゅうりょくしていないところがあるよ')
       return false
     }
-    try {
-      await axios
-        .get(`${process.env.REACT_APP_API_ENDPOINT}/AuthUserInfo`, {
-          params: {
-            UserId: userId,
-            UserPassword: password,
-          },
-        })
-        .then((res: AxiosResponse<{ SessionId: string }>) => {
-          // レスポンスはセッションIDのみ
-          // TODO: ユーザIDの取得タイミング（GET/ UserInfo(sessionId)はその都度叩くか）
-          const { SessionId } = res.data
-          setAuthInfo({ UserName: '', SessionId })
-        })
-    } catch (error) {
-      console.log(error)
-    }
+    axios
+      .get(`${process.env.REACT_APP_API_ENDPOINT}/AuthUserInfo`, {
+        params: {
+          UserId: userId,
+          UserPassword: password,
+        },
+      })
+      .then((res: AxiosResponse<{ SessionId: string }>) => {
+        const { SessionId } = res.data
+        setAuthInfo({ UserName: '', SessionId })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     return true
-  }
+  }, [userId, password, setAuthInfo, validatePassword])
 
   return (
     <div /* css={Background} */>

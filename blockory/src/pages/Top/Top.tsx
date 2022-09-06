@@ -1,17 +1,16 @@
 import React, { useEffect, useContext, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { LoggedInContext, AuthInfoContext } from 'Authentication/AuthContext/AuthContext'
+import { LoggedInContext } from 'Authentication/AuthContext/AuthContext'
 
 import Topdish from 'img/top_dish.png'
 import Logo from 'img/logo.png'
-import Mayonnase from 'img/mayonnaise.png'
+import Mayonnaise from 'img/mayonnaise.png'
 import styles from './Top.module.scss'
 
 const Top: React.FC = () => {
   const navigate = useNavigate()
   const isLogin = useContext(LoggedInContext)
-  const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
 
   const goSignIn = useCallback(() => navigate('/signin'), [navigate])
 
@@ -20,7 +19,7 @@ const Top: React.FC = () => {
   }, [isLogin, goSignIn])
 
   return (
-    <div style={{ height: '100%' }}>
+    <div className={styles.background}>
       <div className={styles.plate}>
         <img src={Topdish} alt="top_dish" style={{ width: '100%' }} />
         <div className={styles.lightblueCircle}>
@@ -77,7 +76,7 @@ const Top: React.FC = () => {
       </div>
 
       <div className={styles.source}>
-        <img src={Mayonnase} alt="mayonnaise" style={{ width: '100%' }} />
+        <img src={Mayonnaise} alt="mayonnaise" style={{ width: '100%' }} />
         <div className={styles.whiteCircle}>
           <div className={styles.content}>
             <img
@@ -98,19 +97,15 @@ const Top: React.FC = () => {
       <div className={styles.note}>
         <h4>About</h4>
         <p className={styles.content}>
-          「ぶろっこりー」は、日記を通してプログラミングを学ぶWebアプリケーションです。
+          <span className={styles.inlineText}>「ぶろっこりー」は、にっきでプログラミングをまなぶツールです</span>
+          <span className={styles.inlineText}>身近な日記という題材を用いて、プログラミング経験をしてみませんか？</span>
+          <span className={styles.inlineText}>まずは、にっきをかくボタンから日記を書いてみてね</span>
+          <span className={styles.inlineText}>
+            そして、みんなのにっきをみたり、じぶんのにっきをふりかえってみたりしてください
+          </span>
           <br />
           <br />
-          プログラミングと聞くと、難しいイメージを持たれがちですが、身近な日記という題材を用いて、プログラミング経験をしてみませんか？
-          <br />
-          <br />
-          まずは、にっきをかくボタンから始めてみてください。
-          <br />
-          <br />
-          その後は、みんなのにっきを覗いてみたり、じぶんのにっきを確認してみたりしてください。
-          <br />
-          <br />
-          それでは、ぶろっこりーの世界をお楽しみください！
+          <span className={styles.inlineText}>では、ぶろっこりーの世界をお楽しみください！</span>
         </p>
       </div>
     </div>

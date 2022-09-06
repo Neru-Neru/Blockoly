@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, Dispatch, SetStateAction, useImperativeHandle } from 'react'
 
 import Blockly from 'blockly'
 import { BlocklyWorkspace } from 'react-blockly'
