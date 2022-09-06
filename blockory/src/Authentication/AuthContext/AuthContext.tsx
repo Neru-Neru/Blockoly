@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // ログイン状態を管理するContext
 export const LoggedInContext = React.createContext<boolean>(false)
@@ -9,13 +9,29 @@ export const AuthInfoContext = React.createContext<[AuthInfo, React.Dispatch<Rea
   () => {},
 ])
 
+// デフォルトのログインユーザ情報を取得する
+const getDefaultAuthInfo = (): AuthInfo => {
+  const authInfo = window.localStorage.getItem('authInfo')
+  if (authInfo) {
+    return JSON.parse(authInfo)
+  }
+  return { UserName: '', SessionId: undefined }
+}
+
+// ログインユーザ情報をlocalStorageに保存する
+const setAuthInfoToLocalStorage = (authInfo: AuthInfo) => {
+  window.localStorage.setItem('authInfo', JSON.stringify(authInfo))
+}
+
 export const AuthContextProvider: React.FC = ({ children }) => {
   const [isLogin, setIsLogin] = useState<boolean>(false)
-  const [authInfo, setAuthInfo] = useState<AuthInfo>({ UserName: '', SessionId: undefined })
+  const [authInfo, setAuthInfo] = useState<AuthInfo>(getDefaultAuthInfo())
 
   useEffect(() => {
-    if (authInfo?.SessionId) setIsLogin(true)
-    else setIsLogin(false)
+    if (authInfo?.SessionId) {
+      setAuthInfoToLocalStorage(authInfo)
+      setIsLogin(true)
+    } else setIsLogin(false)
   }, [authInfo])
 
   return (

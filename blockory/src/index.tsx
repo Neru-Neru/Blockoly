@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import PageWrapper from 'PageWrapper'
+import PageWrapper from 'components/PageWrapper/PageWrapper'
 import Diary from 'pages/Diary/Diary'
 import SignIn from 'pages/SignIn/SignIn'
 import Register from 'pages/Register/Register'
