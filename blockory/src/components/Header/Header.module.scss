@@ -19,7 +19,7 @@
   top: $top * 1%;
   left: $left * 1%;
   z-index: 1;
-  transition: all 0.75s ease-in-out;
+  transition: transform 0.75s ease-in-out;
   color: #222;
   &:hover {
     transform: translate(-50%, -50%) rotateZ(360deg);

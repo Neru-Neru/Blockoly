@@ -98,11 +98,11 @@ const Top: React.FC = () => {
         <h4>About</h4>
         <p className={styles.content}>
           <span className={styles.inlineText}>「ぶろっこりー」は、にっきでプログラミングをまなぶツールです</span>
-          <span className={styles.inlineText}>身近な日記という題材を用いて、プログラミング経験をしてみませんか？</span>
+          <span className={styles.inlineText}>身近な日記という題材を用いて、プログラミングをしませんか？</span>
+          <br />
+          <br />
           <span className={styles.inlineText}>まずは、にっきをかくボタンから日記を書いてみてね</span>
-          <span className={styles.inlineText}>
-            そして、みんなのにっきをみたり、じぶんのにっきをふりかえってみたりしてください
-          </span>
+          <span className={styles.inlineText}>みんなのにっきをみたり、じぶんのにっきをふりかえってね</span>
           <br />
           <br />
           <span className={styles.inlineText}>では、ぶろっこりーの世界をお楽しみください！</span>
