@@ -1,7 +1,7 @@
-import React from 'react'
+import styles from './Procedure.module.scss'
 
 const Procedure = () => (
-  <div className="row border py-3 h-25">
+  <div className={styles.container}>
     <p>
       1. ブロックをくみたててみよう
       <br />
