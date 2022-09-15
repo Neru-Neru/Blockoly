@@ -53,20 +53,31 @@ const WritingDiaryStep1: React.FC = () => {
     <div className="container">
       <div className="row h-100">
         <div className="col-md-7 h-100">
-          <Editor ref={ref} setDiaryCode={setDiaryCode} setBlock={setBlock} />
-          <div className="h-25 pt-3">
-            <Note diaryCode={diaryCode} />
+          <div className={styles.editorContainer}>
+            <div className={styles.editorDescription}>
+              <p className={styles.description}>
+                ひだりのメニューから、ブロックをえらんで、にっきをつくろう！
+                <br />
+                アクションブロックをくみあわせてね
+              </p>
+            </div>
+            <Editor ref={ref} setDiaryCode={setDiaryCode} setBlock={setBlock} />
           </div>
         </div>
         <div className="col-md-5 h-100">
-          <Procedure />
-          <div className="row border py-3 h-50">
-            {/* <Movie
+          {/* <div className="row border py-3 h-50">
+            <Movie
             clickEvent={getQueryStrings}
             handleDisplay={checkDouwnloadLink}
             hideDescBtn={hideDescBtn}
             username={username}
-          ></Movie> */}
+          ></Movie>
+          </div> */}
+          <div className={styles.movieContainer}>
+            <div className={styles.movieDescription}>
+              <p className={styles.description}>ブロックをくみたてたら、どうがをみてみよう！</p>
+            </div>
+            <div style={{ height: '75%', background: '#f3f3f3' }} />
           </div>
           <ToStep2Button onClick={navigateToStep2} />
         </div>

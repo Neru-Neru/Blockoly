@@ -15,9 +15,9 @@ const ToStep2Button: React.FC<Props> = (props) => {
     <div className={styles.container}>
       <div className={styles.text}>
         <p>
-          このどうがでいいなら、つぎにしょうさいをきめてね。
+          このどうがでいいなら、つぎにしょうさいをきめてね
           <br />
-          へんこうするなら、ブロックをうごかしてね。
+          へんこうするなら、ブロックをうごかしてね
         </p>
       </div>
       <div className={styles.buttonWrapper}>

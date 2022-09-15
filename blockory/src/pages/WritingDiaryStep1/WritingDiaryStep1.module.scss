@@ -1,0 +1,62 @@
+// Editor
+.editorContainer {
+  height: 100%;
+  padding-top: 50px;
+}
+
+.editorDescription {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   height: 24%;
+  //   margin-bottom: 1%;
+  //   border: 1px solid #dee2e6;
+  background-color: #fff;
+  text-align: center;
+}
+
+// Movie
+.movieContainer {
+  height: 75%;
+  padding-top: 50px;
+}
+
+.movieDescription {
+  height: 100px;
+  //   border: 1px solid #dee2e6;
+  background-color: #fff;
+  text-align: center;
+}
+
+// Description
+.description {
+  padding: 6px 12px;
+  font-size: 20px;
+}
+
+// Circle
+.circleContainer {
+  position: relative;
+  height: 75px;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #7ba369;
+  text-align: center;
+  line-height: 100px;
+
+  .circleText {
+    color: #fff;
+    font-size: 2rem;
+  }
+}

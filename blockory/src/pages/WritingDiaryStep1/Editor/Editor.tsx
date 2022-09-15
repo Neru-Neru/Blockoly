@@ -6,6 +6,7 @@ import { Workspace } from 'core/blockly'
 
 import { Categories } from 'blocks/block_xml'
 import styles from './Editor.module.scss'
+import './Editor.css'
 import 'blocks/act_blocks'
 import 'blocks/ele_blocks'
 
@@ -92,7 +93,7 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
   return (
     <BlocklyWorkspace
       toolboxConfiguration={categories}
-      className="h-75"
+      className={styles.editor}
       onWorkspaceChange={changeWorkspace}
       onXmlChange={setXml}
     />
