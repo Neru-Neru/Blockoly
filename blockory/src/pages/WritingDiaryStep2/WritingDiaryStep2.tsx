@@ -57,7 +57,7 @@ const WritingDiaryStep2: React.FC = () => {
               text="にっきをかく"
               className="btn btn-secondary"
               onClick={() => {
-                ;(async () => {
+                void (async () => {
                   await registerDiary()
                 })()
                 navigate('./')

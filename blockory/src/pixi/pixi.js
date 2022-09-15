@@ -1,5 +1,6 @@
 // require('pixi.js'); // pixi.js 4.3.0
 // public
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const suffix = '.png'
 
@@ -181,7 +182,7 @@ async function Ride(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -199,7 +200,7 @@ async function Ride(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -239,7 +240,7 @@ async function Run(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -268,7 +269,7 @@ async function Eat(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -285,7 +286,7 @@ async function Eat(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -303,7 +304,7 @@ async function Eat(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -339,7 +340,7 @@ async function Debug(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -356,7 +357,7 @@ async function Debug(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -384,7 +385,7 @@ async function Draw(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -401,7 +402,7 @@ async function Draw(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -419,7 +420,7 @@ async function Draw(args, stage) {
 
   const tteffCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteffCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteffCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const effCharactor = new PIXI.extras.AnimatedSprite(tteffCharactor)
@@ -452,7 +453,7 @@ async function Play(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -469,7 +470,7 @@ async function Play(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -499,7 +500,7 @@ async function GetUp(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
   // mvCharactor.play();
@@ -517,7 +518,7 @@ async function GetUp(args, stage) {
 
   const ttkiraCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttkiraCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttkiraCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const kiraCharactor = new PIXI.extras.AnimatedSprite(ttkiraCharactor)
@@ -537,7 +538,7 @@ async function GetUp(args, stage) {
 
   const ttclockCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttclockCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttclockCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const clockCharactor = new PIXI.extras.AnimatedSprite(ttclockCharactor)
@@ -555,7 +556,7 @@ async function GetUp(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -573,7 +574,7 @@ async function GetUp(args, stage) {
 
   const tteff2Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff2Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff2Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff2Charactor = new PIXI.extras.AnimatedSprite(tteff2Charactor)
@@ -592,7 +593,7 @@ async function GetUp(args, stage) {
 
   const ttzzzCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttzzzCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttzzzCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const zzzCharactor = new PIXI.extras.AnimatedSprite(ttzzzCharactor)
@@ -640,7 +641,7 @@ async function Sleep(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
   // mvCharactor.play();
@@ -658,7 +659,7 @@ async function Sleep(args, stage) {
 
   const ttkiraCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttkiraCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttkiraCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const kiraCharactor = new PIXI.extras.AnimatedSprite(ttkiraCharactor)
@@ -678,7 +679,7 @@ async function Sleep(args, stage) {
 
   const ttclockCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttclockCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttclockCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const clockCharactor = new PIXI.extras.AnimatedSprite(ttclockCharactor)
@@ -698,7 +699,7 @@ async function Sleep(args, stage) {
 
   const ttzzzCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttzzzCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttzzzCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const zzzCharactor = new PIXI.extras.AnimatedSprite(ttzzzCharactor)
@@ -717,7 +718,7 @@ async function Sleep(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -758,7 +759,7 @@ async function Watch(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -776,7 +777,7 @@ async function Watch(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -794,7 +795,7 @@ async function Watch(args, stage) {
 
   const tttvCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tttvCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tttvCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const tvCharactor = new PIXI.extras.AnimatedSprite(tttvCharactor)
@@ -812,7 +813,7 @@ async function Watch(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -851,7 +852,7 @@ async function Buy(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -868,7 +869,7 @@ async function Buy(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -886,7 +887,7 @@ async function Buy(args, stage) {
 
   const tteffCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteffCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteffCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const effCharactor = new PIXI.extras.AnimatedSprite(tteffCharactor)
@@ -918,7 +919,7 @@ async function Study(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -937,7 +938,7 @@ await fetch("./img/materials_png/" + element + "/config.json")
 let tteleCharactor = [];
 for(let i = 1; i <= json.length; i++)
 {
-tteleCharactor.push(PIXI.Texture.fromImage('../img/materials_png/' + json.name + '/' +json.name + i + ".png"));
+tteleCharactor.push(PIXI.Texture.fromImage('./img/materials_png/' + json.name + '/' +json.name + i + ".png"));
 }
 
 let eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor);
@@ -955,7 +956,7 @@ eleCharactor.width = 100;
 
   const tthateCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tthateCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tthateCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const hateCharactor = new PIXI.extras.AnimatedSprite(tthateCharactor)
@@ -977,7 +978,7 @@ eleCharactor.width = 100;
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -995,7 +996,7 @@ eleCharactor.width = 100;
 
   const tteff2Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff2Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff2Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff2Charactor = new PIXI.extras.AnimatedSprite(tteff2Charactor)
@@ -1013,7 +1014,7 @@ eleCharactor.width = 100;
 
   const ttbikkuCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttbikkuCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttbikkuCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const bikkuCharactor = new PIXI.extras.AnimatedSprite(ttbikkuCharactor)
@@ -1056,7 +1057,7 @@ async function Make(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -1073,7 +1074,7 @@ async function Make(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -1091,7 +1092,7 @@ async function Make(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -1129,7 +1130,7 @@ async function Cook(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -1146,7 +1147,7 @@ async function Cook(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -1164,7 +1165,7 @@ async function Cook(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`../img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -1235,14 +1236,13 @@ export async function main(action, element, username, date) {
    */
   animation()
 
-  let recorder
   // canvasの取得
-  canvas = document.getElementsByTagName('canvas')[0]
-  ctx = canvas.getContext('2d')
+  const canvas = document.getElementsByTagName('canvas')[0]
+  const ctx = canvas.getContext('2d')
   // canvasからストリームを取得
   const stream = canvas.captureStream()
   // ストリームからMediaRecorderを生成
-  recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' })
+  const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' })
   // ダウンロード用のリンクを準備
   const anchor = document.getElementById('downloadlink')
   console.log('anchor: ', anchor)
@@ -1251,76 +1251,78 @@ export async function main(action, element, username, date) {
     console.log('終了時の処理 start')
     const videoBlob = new Blob([e.data], { type: e.data.type })
     console.log('type = ', e.data.type)
-    blobUrl = window.URL.createObjectURL(videoBlob)
+    const blobUrl = window.URL.createObjectURL(videoBlob)
     console.log('url: ', blobUrl)
     console.log(username, date)
-    anchor.download = `${username + date}.webm`
-    anchor.href = blobUrl
-    anchor.style.display = 'block'
-    console.log('anchor.download.bytes()', anchor.download.bytes())
-    const videoFile = new File([anchor.download.bytes() + 2, anchor.download, e.data], anchor.download, {
-      type: e.data.type,
-    })
-    const oReq = new XMLHttpRequest()
-    oReq.open('POST', '/save-movie', true)
-    oReq.onload = function (oEvent) {
-      // Uploaded.
-    }
-    console.log('check:', ['header', videoFile])
-    // oReq.send(videoFile);
-    console.log('send successfully videos')
-    // 録画開始
+    // anchor.download = `${username + date}.webm`
+    // anchor.href = blobUrl
+    // anchor.style.display = 'block'
+    // console.log('anchor.download.bytes()', anchor.download.bytes())
+    // const videoFile = new File([anchor.download.bytes() + 2, anchor.download, e.data], anchor.download, {
+    //   type: e.data.type,
+    // })
+    // const oReq = new XMLHttpRequest()
+    // oReq.open('POST', '/save-movie', true)
+    // oReq.onload = function (oEvent) {
+    //   // Uploaded.
+    // }
+    // console.log('check:', ['header', videoFile])
+    // // oReq.send(videoFile);
+    // console.log('send successfully videos')
+    // // 録画開始
   }
   recorder.start()
   console.log('record: start')
-  const action_l = action.split(',')
-  const element_l = element.split(',')
+  //   const action_l = action.split(',')
+  const action_l = action
+  //   const element_l = element.split(',')
+  const element_l = element
 
-  console.log('action: start', action_l)
-  console.log(element_l)
-  for (let i = 0; i < action_l.length; i++) {
-    switch (action_l[i]) {
+  for (let i = 0; i < action.length; i++) {
+    console.log('for statement', action[i])
+    switch (action[i]) {
       case 'run':
         await Run([], stage)
         break
       case 'ride':
-        await Ride([element_l[i]], stage)
+        await Ride([element[i]], stage)
         break
       case 'play':
-        await Play([element_l[i]], stage)
+        await Play([element[i]], stage)
         break
       case 'debug':
-        await Debug([element_l[i]], stage)
+        await Debug([element[i]], stage)
         break
       case 'eat':
-        await Eat([element_l[i]], stage)
+        await Eat([element[i]], stage)
         break
       case 'draw':
-        await Draw([element_l[i]], stage)
+        await Draw([element[i]], stage)
         break
       case 'getup':
-        await GetUp([element_l[i]], stage)
+        console.log('getup')
+        await GetUp([element[i]], stage)
         break
       case 'sleep':
-        await Sleep([element_l[i]], stage)
+        await Sleep([element[i]], stage)
         break
       case 'watch':
-        await Watch([element_l[i]], stage)
+        await Watch([element[i]], stage)
         break
       case 'buy':
-        await Buy([element_l[i]], stage)
+        await Buy([element[i]], stage)
         break
       case 'practice':
-        await Play([element_l[i]], stage)
+        await Play([element[i]], stage)
         break
       case 'study':
-        await Study([element_l[i]], stage)
+        await Study([element[i]], stage)
         break
       case 'make':
-        await Make([element_l[i]], stage)
+        await Make([element[i]], stage)
         break
       case 'cook':
-        await Cook([element_l[i]], stage)
+        await Cook([element[i]], stage)
         break
     }
     await stage.removeChildren(0)

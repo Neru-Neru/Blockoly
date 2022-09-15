@@ -5,12 +5,14 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'eslint:recommended',
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
     'prettier',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,7 +20,10 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
   },
+  plugins: ['react', '@typescript-eslint'],
+  ignorePatterns: ['.eslintrc.js'],
   // JS，TS共通のルール
   rules: {
     'no-use-before-define': 'off',
@@ -59,33 +64,19 @@ module.exports = {
         allowAsStatement: true,
       },
     ],
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-namespace': 'off',
   },
-  // TS向けのルール
-  overrides: [
-    {
-      extends: [
-        'plugin:react/recommended',
-        'airbnb-typescript',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ],
-      parser: '@typescript-eslint/parser',
-      plugins: ['react', '@typescript-eslint'],
-      parserOptions: {
-        sourceType: 'module',
-        project: ['./tsconfig.json'],
-      },
-      ignorePatterns: ['.eslintrc.js'],
-      rules: {
-        '@typescript-eslint/no-use-before-define': 'off',
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-return': 'off',
-        '@typescript-eslint/no-floating-promises': 'off',
-        '@typescript-eslint/no-namespace': 'off',
-      },
-    },
-  ],
   settings: {
     'import/resolver': {
       node: {

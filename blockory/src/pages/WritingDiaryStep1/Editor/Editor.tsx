@@ -3,6 +3,7 @@ import React, { useState, Dispatch, SetStateAction, useImperativeHandle } from '
 import Blockly from 'blockly'
 import { BlocklyWorkspace } from 'react-blockly'
 import { Workspace } from 'core/blockly'
+import { ToolboxInfo } from 'core/utils/toolbox'
 
 import { Categories } from 'blocks/block_xml'
 import styles from './Editor.module.scss'
@@ -57,7 +58,7 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
 
   const { setDiaryCode, setBlock } = props
 
-  const categories = Categories as Category
+  const categories = Categories as unknown as ToolboxInfo
 
   const initialXml =
     '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="text" x="70" y="30"><field name="TEXT"></field></block></xml>'
@@ -77,13 +78,13 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
       const blockTags = xmlDoc.querySelectorAll('xml > block')
 
       blockTags.forEach((block) => {
-        const element = block.getAttribute('type')
-        if (element) elements.push(element)
+        const action = block.getAttribute('type')
+        if (action) actions.push(action)
         if (block.hasChildNodes()) {
-          const action = block.querySelector('block')?.getAttribute('type')
-          if (action) actions.push(action)
+          const element = block.querySelector('block')?.getAttribute('type')
+          if (element) elements.push(element)
         } else {
-          actions.push('')
+          elements.push('')
         }
       })
       return { element: elements, action: actions }

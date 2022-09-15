@@ -9,6 +9,9 @@ export const Categories = {
       cssConfig: {
         icon: 'fas fa-utensils',
       },
+      id: undefined,
+      categorystyle: undefined,
+      hidden: undefined,
       contents: [
         {
           kind: 'block',

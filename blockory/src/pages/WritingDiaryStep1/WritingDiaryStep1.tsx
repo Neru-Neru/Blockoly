@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Editor from 'pages/WritingDiaryStep1/Editor/Editor'
-import FlatButton from 'components/FlatButton/FlatButton'
-import Note from './Note/Note'
-
+import { main } from 'pixi/pixi'
+import { AuthInfoContext } from 'Authentication/AuthContext/AuthContext'
 import styles from './WritingDiaryStep1.module.scss'
-import Procedure from './Procedure/Procedure'
 import ToStep2Button from './ToStep2Button/ToStep2Button'
 
 interface IndexableInterface {
@@ -22,9 +19,11 @@ type Handler = {
 const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
   const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
+  const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
 
   const navigate = useNavigate()
   const ref = React.useRef<Handler>(null)
+  const today = new Date()
 
   // const hideDescButton = () => {
   //   const afterDownloadText = document.getElementById('after_download')
@@ -49,6 +48,12 @@ const WritingDiaryStep1: React.FC = () => {
     }
   }
 
+  const clickMovieButton = () => {
+    const b = ref.current?.xmlToList()
+    console.log(b)
+    if (b) main(b.action, b.element, authInfo.UserName, today)
+  }
+
   return (
     <div className="container">
       <div className="row h-100">
@@ -68,16 +73,21 @@ const WritingDiaryStep1: React.FC = () => {
           {/* <div className="row border py-3 h-50">
             <Movie
             clickEvent={getQueryStrings}
-            handleDisplay={checkDouwnloadLink}
+            handleDisplay={checkDownloadLink}
             hideDescBtn={hideDescBtn}
             username={username}
           ></Movie>
           </div> */}
+
           <div className={styles.movieContainer}>
             <div className={styles.movieDescription}>
               <p className={styles.description}>ブロックをくみたてたら、どうがをみてみよう！</p>
             </div>
             <div style={{ height: '75%', background: '#f3f3f3' }} />
+            <div className="stage" id="stage" />
+            <button type="button" aria-label="start movie" onClick={clickMovieButton}>
+              どうがをみる
+            </button>
           </div>
           <ToStep2Button onClick={navigateToStep2} />
         </div>
