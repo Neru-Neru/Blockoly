@@ -3,34 +3,36 @@ import React, { useState, Dispatch, SetStateAction, useImperativeHandle } from '
 import Blockly from 'blockly'
 import { BlocklyWorkspace } from 'react-blockly'
 import { Workspace } from 'core/blockly'
+import { ToolboxInfo } from 'core/utils/toolbox'
 
 import { Categories } from 'blocks/block_xml'
 import styles from './Editor.module.scss'
+import './Editor.css'
 import 'blocks/act_blocks'
 import 'blocks/ele_blocks'
 
-type Category = {
-  kind: string
-  contents: {
-    kind: string
-    name: string
-    expanded?: boolean
-    colour: number
-    contents: {
-      kind: string
-      type: string
-    }[]
-  }[]
-}
+// type Category = {
+//   kind: string
+//   contents: {
+//     kind: string
+//     name: string
+//     expanded?: boolean
+//     colour: number
+//     contents: {
+//       kind: string
+//       type: string
+//     }[]
+//   }[]
+// }
 
 type Props = {
   setDiaryCode: Dispatch<SetStateAction<string>>
-  setBlock: Dispatch<
-    SetStateAction<{
-      element: string[]
-      action: string[]
-    }>
-  >
+  // setBlock: Dispatch<
+  //   SetStateAction<{
+  //     element: string[]
+  //     action: string[]
+  //   }>
+  // >
 }
 
 type Handler = {
@@ -43,10 +45,10 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
   //  <xml xmlns="https://developers.google.com/blockly/xml">
   //   <block type="orange">
   //     <next>
-  //       <block type=".buy"></block>
+  //       <block type="buy"></block>
   //     </next>
   //   </block>
-  //   <block type=".getup"></block>
+  //   <block type="getup"></block>
   //   <block type="cat">
   //     <next>
   //       <block type=".practice"></block>
@@ -54,9 +56,9 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
   //   </block>
   // </xml>
 
-  const { setDiaryCode, setBlock } = props
+  const { setDiaryCode } = props
 
-  const categories = Categories as Category
+  const categories = Categories as unknown as ToolboxInfo
 
   const initialXml =
     '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="text" x="70" y="30"><field name="TEXT"></field></block></xml>'
@@ -68,31 +70,32 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
 
   useImperativeHandle(ref, () => ({
     xmlToList: () => {
-      const actions: string[] = []
-      const elements: string[] = []
+      const newActionList: string[] = []
+      const newElementList: string[] = []
 
       const dpObj = new DOMParser()
       const xmlDoc = dpObj.parseFromString(xml, 'text/xml')
       const blockTags = xmlDoc.querySelectorAll('xml > block')
 
       blockTags.forEach((block) => {
-        const element = block.getAttribute('type')
-        if (element) elements.push(element)
+        const firstBlock = block.getAttribute('type')
         if (block.hasChildNodes()) {
-          const action = block.querySelector('block')?.getAttribute('type')
-          if (action) actions.push(action)
+          const secondBlock = block.querySelector('block')?.getAttribute('type')
+          if (firstBlock) newElementList.push(firstBlock)
+          if (secondBlock) newActionList.push(secondBlock)
         } else {
-          actions.push('')
+          if (firstBlock) newActionList.push(firstBlock)
+          newElementList.push('')
         }
       })
-      return { element: elements, action: actions }
+      return { element: newElementList, action: newActionList }
     },
   }))
 
   return (
     <BlocklyWorkspace
       toolboxConfiguration={categories}
-      className="h-75"
+      className={styles.editor}
       onWorkspaceChange={changeWorkspace}
       onXmlChange={setXml}
     />

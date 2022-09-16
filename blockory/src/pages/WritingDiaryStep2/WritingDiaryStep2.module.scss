@@ -1,0 +1,38 @@
+.wrapper {
+  padding-top: 50px;
+  width: 50%;
+  min-width: 660px;
+  margin: 0 auto;
+}
+
+.button {
+  padding: 6px 12px;
+  margin-top: 6px;
+  background: #6c757d;
+  color: #fff;
+  border: 2px solid #6c757d;
+  border-radius: 8px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+  &:hover {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #92aac7;
+  }
+
+  &:disabled {
+    border-color: #eaeaea;
+    background: #fafafa;
+    cursor: default;
+    position: static;
+    color: #999;
+    /* Usually, !important should be avoided but here it's really needed :) */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+.submit {
+  background: #e0851d;
+  border: 2px solid #e0851d;
+}

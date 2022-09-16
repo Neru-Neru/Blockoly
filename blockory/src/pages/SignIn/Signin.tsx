@@ -50,7 +50,7 @@ const SignIn: React.FC = () => {
       })
       .then((res: AxiosResponse<{ SessionId: string }>) => {
         const { SessionId } = res.data
-        setAuthInfo({ UserName: '', SessionId })
+        setAuthInfo({ UserName: userId, SessionId })
       })
       .catch((err) => {
         console.log(err)

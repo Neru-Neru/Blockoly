@@ -6,6 +6,12 @@ export const Categories = {
       name: 'たべもの',
       expanded: true,
       colour: 0,
+      cssConfig: {
+        icon: 'fas fa-utensils',
+      },
+      id: undefined,
+      categorystyle: undefined,
+      hidden: undefined,
       contents: [
         {
           kind: 'block',
@@ -72,6 +78,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'おやつ',
+      cssConfig: {
+        icon: 'fas fa-cookie-bite',
+      },
       expanded: true,
       colour: 20,
       contents: [
@@ -112,6 +121,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'がっき',
+      cssConfig: {
+        icon: 'fas fa-guitar',
+      },
       expanded: true,
       colour: 40,
       contents: [
@@ -132,6 +144,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'いきもの',
+      cssConfig: {
+        icon: 'fas fa-dog',
+      },
       expanded: true,
       colour: 60,
       contents: [
@@ -148,6 +163,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'てんき',
+      cssConfig: {
+        icon: 'fas fa-sun',
+      },
       expanded: true,
       colour: 80,
       contents: [
@@ -180,6 +198,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'スポーツ',
+      cssConfig: {
+        icon: 'fas fa-futbol',
+      },
       expanded: true,
       colour: 100,
       contents: [
@@ -208,6 +229,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'どうぐ',
+      cssConfig: {
+        icon: 'fas fa-tag',
+      },
       expanded: true,
       colour: 120,
       contents: [
@@ -252,6 +276,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'がっこう',
+      cssConfig: {
+        icon: 'fas fa-school',
+      },
       expanded: true,
       colour: 140,
       contents: [
@@ -284,6 +311,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'のりもの',
+      cssConfig: {
+        icon: 'fas fa-train',
+      },
       expanded: true,
       colour: 160,
       contents: [
@@ -312,6 +342,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'かぐ',
+      cssConfig: {
+        icon: 'fas fa-chair',
+      },
       expanded: true,
       colour: 180,
       contents: [
@@ -332,6 +365,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'ばしょ',
+      cssConfig: {
+        icon: 'fas fa-map-marked',
+      },
       expanded: true,
       colour: 200,
       contents: [
@@ -368,6 +404,9 @@ export const Categories = {
     {
       kind: 'category',
       name: 'ひと',
+      cssConfig: {
+        icon: 'fas fa-user',
+      },
       expanded: true,
       colour: 220,
       contents: [
@@ -394,8 +433,17 @@ export const Categories = {
       ],
     },
     {
+      kind: 'sep',
+      cssConfig: {
+        container: 'separateRow',
+      },
+    },
+    {
       kind: 'category',
       name: 'アクション',
+      cssConfig: {
+        icon: 'fas fa-running',
+      },
       expanded: true,
       colour: 240,
       contents: [
