@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import FlatButton from 'components/FlatButton/FlatButton'
 import DescriptionForm from './DescriptionForm/DescriptionForm'
+import styles from './WritingDiaryStep2.module.scss'
 
 const WritingDiaryStep2: React.FC = () => {
   const navigate = useNavigate()
@@ -55,7 +56,7 @@ const WritingDiaryStep2: React.FC = () => {
           <div className="d-grid gap-2 col-4 mx-auto w-100">
             <FlatButton
               text="にっきをかく"
-              className="btn btn-secondary"
+              className={styles.button}
               onClick={() => {
                 void (async () => {
                   await registerDiary()

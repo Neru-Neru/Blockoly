@@ -25,6 +25,9 @@
 .movieDescription {
   height: 100px;
   //   border: 1px solid #dee2e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fff;
   text-align: center;
 }
@@ -33,6 +36,18 @@
 .description {
   padding: 6px 12px;
   font-size: 20px;
+  flex: 1;
+  margin: 0;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 1399px) {
+    .brTb {
+      display: none;
+    }
+  }
 }
 
 // Circle
@@ -68,5 +83,30 @@
   canvas {
     width: 100%;
     aspect-ratio: 16 / 9;
+  }
+}
+
+.buttonWrapper {
+  width: 100%;
+  height: 50px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.button {
+  width: 80%;
+  height: 80%;
+  padding: 0 12px;
+  margin-top: 6px;
+  background: #6c757d;
+  color: #fff;
+  border: 2px solid #6c757d;
+  border-radius: 8px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+  &:hover {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #92aac7;
   }
 }

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Editor from 'pages/WritingDiaryStep1/Editor/Editor'
 import { main } from 'pixi/pixi'
 import { AuthInfoContext } from 'Authentication/AuthContext/AuthContext'
+import FlatButton from 'components/FlatButton/FlatButton'
 import styles from './WritingDiaryStep1.module.scss'
 import ToStep2Button from './ToStep2Button/ToStep2Button'
 
@@ -57,6 +58,7 @@ const WritingDiaryStep1: React.FC = () => {
   const clickMovieButton = () => {
     if (ref.current) {
       const blocks = ref.current?.xmlToList()
+      console.log(blocks)
       main(blocks.action, blocks.element, authInfo.UserName, formatDate(new Date()))
     }
   }
@@ -68,9 +70,9 @@ const WritingDiaryStep1: React.FC = () => {
           <div className={styles.editorContainer}>
             <div className={styles.editorDescription}>
               <p className={styles.description}>
-                ひだりのメニューから、ブロックをえらんで、にっきをつくろう！
+                ひだりのメニューから、ブロックをえらんで、にっきを作ろう！
                 <br />
-                アクションブロックをくみあわせてね
+                アクションブロックを組み合わせてね
               </p>
             </div>
             <Editor ref={ref} setDiaryCode={setDiaryCode} />
@@ -88,13 +90,17 @@ const WritingDiaryStep1: React.FC = () => {
 
           <div className={styles.movieContainer}>
             <div className={styles.movieDescription}>
-              <p className={styles.description}>ブロックをくみたてたら、どうがをみてみよう！</p>
+              <p className={styles.description}>
+                ブロックを組み立てたら、
+                <br className={styles.brTb} />
+                どうがを見てみよう！
+              </p>
             </div>
             <div style={{ height: '75%', background: '#f3f3f3' }}>
               <div className={styles.stage} id="stage" />
-              <button type="button" aria-label="start movie" onClick={clickMovieButton}>
-                どうがをみる
-              </button>
+              <div className={styles.buttonWrapper}>
+                <FlatButton text="どうがを見る" className={styles.button} onClick={clickMovieButton} />
+              </div>
             </div>
           </div>
           <ToStep2Button onClick={navigateToStep2} />

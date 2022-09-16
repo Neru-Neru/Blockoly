@@ -15,13 +15,13 @@ const ToStep2Button: React.FC<Props> = (props) => {
     <div className={styles.container}>
       <div className={styles.text}>
         <p>
-          このどうがでいいなら、つぎにしょうさいをきめてね
+          つぎに、しょうさいを決めてね
           <br />
-          へんこうするなら、ブロックをうごかしてね
+          へんこうするなら、ブロックを動かしてね
         </p>
       </div>
       <div className={styles.buttonWrapper}>
-        <FlatButton text="しょうさいをきめる" className={styles.button} onClick={onClick} />
+        <FlatButton text="しょうさいをきめる" className={styles.button} id="to-step2-button" onClick={onClick} />
       </div>
     </div>
   )

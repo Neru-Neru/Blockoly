@@ -11,19 +11,19 @@ import './Editor.css'
 import 'blocks/act_blocks'
 import 'blocks/ele_blocks'
 
-type Category = {
-  kind: string
-  contents: {
-    kind: string
-    name: string
-    expanded?: boolean
-    colour: number
-    contents: {
-      kind: string
-      type: string
-    }[]
-  }[]
-}
+// type Category = {
+//   kind: string
+//   contents: {
+//     kind: string
+//     name: string
+//     expanded?: boolean
+//     colour: number
+//     contents: {
+//       kind: string
+//       type: string
+//     }[]
+//   }[]
+// }
 
 type Props = {
   setDiaryCode: Dispatch<SetStateAction<string>>
@@ -45,10 +45,10 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
   //  <xml xmlns="https://developers.google.com/blockly/xml">
   //   <block type="orange">
   //     <next>
-  //       <block type=".buy"></block>
+  //       <block type="buy"></block>
   //     </next>
   //   </block>
-  //   <block type=".getup"></block>
+  //   <block type="getup"></block>
   //   <block type="cat">
   //     <next>
   //       <block type=".practice"></block>
@@ -70,24 +70,25 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
 
   useImperativeHandle(ref, () => ({
     xmlToList: () => {
-      const actions: string[] = []
-      const elements: string[] = []
+      const newActionList: string[] = []
+      const newElementList: string[] = []
 
       const dpObj = new DOMParser()
       const xmlDoc = dpObj.parseFromString(xml, 'text/xml')
       const blockTags = xmlDoc.querySelectorAll('xml > block')
 
       blockTags.forEach((block) => {
-        const action = block.getAttribute('type')
-        if (action) actions.push(action)
+        const firstBlock = block.getAttribute('type')
         if (block.hasChildNodes()) {
-          const element = block.querySelector('block')?.getAttribute('type')
-          if (element) elements.push(element)
+          const secondBlock = block.querySelector('block')?.getAttribute('type')
+          if (firstBlock) newElementList.push(firstBlock)
+          if (secondBlock) newActionList.push(secondBlock)
         } else {
-          elements.push('')
+          if (firstBlock) newActionList.push(firstBlock)
+          newElementList.push('')
         }
       })
-      return { element: elements, action: actions }
+      return { element: newElementList, action: newActionList }
     },
   }))
 
