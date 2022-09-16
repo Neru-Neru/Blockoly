@@ -21,6 +21,7 @@ const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
   // const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
   const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
+  const [blob, setBlob] = useState<string>()
 
   const navigate = useNavigate()
   const ref = React.useRef<Handler>(null)
@@ -44,7 +45,7 @@ const WritingDiaryStep1: React.FC = () => {
   const navigateToStep2 = () => {
     if (ref.current) {
       const blocks = ref.current?.xmlToList()
-      navigate('/writingstep2', { state: { block: blocks } })
+      navigate('/writingstep2', { state: { block: blocks, video: blob } })
     }
   }
 
@@ -55,11 +56,10 @@ const WritingDiaryStep1: React.FC = () => {
     return `${y}-${m}-${d}`
   }
 
-  const clickMovieButton = () => {
+  const clickMovieButton = async () => {
     if (ref.current) {
       const blocks = ref.current?.xmlToList()
-      console.log(blocks)
-      main(blocks.action, blocks.element, authInfo.UserName, formatDate(new Date()))
+      await main(blocks.action, blocks.element, authInfo.UserName, formatDate(new Date()), setBlob)
     }
   }
 
@@ -99,6 +99,7 @@ const WritingDiaryStep1: React.FC = () => {
             <div style={{ height: '75%', background: '#f3f3f3' }}>
               <div className={styles.stage} id="stage" />
               <div className={styles.buttonWrapper}>
+                {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
                 <FlatButton text="どうがを見る" className={styles.button} onClick={clickMovieButton} />
               </div>
             </div>
@@ -106,6 +107,11 @@ const WritingDiaryStep1: React.FC = () => {
           <ToStep2Button onClick={navigateToStep2} />
         </div>
       </div>
+      <p>
+        <a href="." id="download-link" style={{ display: 'none' }}>
+          ダウンロード
+        </a>
+      </p>
     </div>
   )
 }

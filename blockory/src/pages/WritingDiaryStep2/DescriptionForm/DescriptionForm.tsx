@@ -41,7 +41,7 @@ const DescriptionForm: React.FC<Props> = (props) => {
           onChange={onChangeDescription}
           autoComplete="off"
           required
-          rows={5}
+          rows={2}
           style={{ resize: 'none' }}
         />
       </label>

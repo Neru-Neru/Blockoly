@@ -3,5 +3,5 @@ public/
 **/node_modules/
 *.config.js
 .*lintrc.js
-pixi.js
+pixi/
 /*.*

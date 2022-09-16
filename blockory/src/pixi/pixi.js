@@ -1366,101 +1366,70 @@ async function Cook(args, stage) {
 }
 
 // Define main function
-export async function main(action, element, username, date) {
-  // Step2に進むボタンをdisabledにする
+export async function main(action, element, username, date, setBlob) {
+  // サムネイル作成に進むボタンをdisabledにする
   document.getElementById('to-step2-button').setAttribute('disabled', '')
 
-  /**
-   * STEP.1 元となるコンテナを用意。画面に描画される要素は全てこの下にぶら下がる
-   */
+  // STEP.1 元となるコンテナを用意。画面に描画される要素は全てこの下にぶら下がる
   const stage = new PIXI.Container()
 
-  /**
-   * STEP.2 描画するためのレンダラーを用意。引数は描画領域の幅、高さ、オプション
-   */
+  //STEP.2 描画するためのレンダラーを用意。引数は描画領域の幅、高さ、オプション
   const backgroundColor = [0xf8f8ff, 0xffc0cb, 0xf5f5f5]
-  const renderer = PIXI.autoDetectRenderer(640, 480, {
-    antialias: true, // アンチエイリアスをONに
-    backgroundColor: backgroundColor[0], // 背景色
-    //  transparent:      true,     // 背景を透過にしたい場合はこちらを指定
+  const renderer = PIXI.autoDetectRenderer(1920, 1080, {
+    antialias: true, // アンチエイリアスをON
+    backgroundColor: backgroundColor[0],
+    //  transparent: true, // 背景を透過にしたい場合は指定
   })
   renderer.backgroundColor = 0xf8f8ff
   renderer.antialias = true
+  renderer.resize(640, 360)
 
-  /**
-   * STEP.3 #stage のDOM要素に view を追加
-   */
-  document.getElementById('stage').appendChild(renderer.view)
+  // STEP.3 #stage のDOM要素に view を追加
+  const stageDiv = document.getElementById('stage')
+  stageDiv.appendChild(renderer.view)
   String.prototype.bytes = function () {
     return encodeURIComponent(this).replace(/%../g, 'x').length
   }
-  /**
-   * animation関数を定義
-   */
+
+  // animation関数を定義
   var animation = function () {
     // 再帰的に次のアニメーションフレームで animation関数を呼び出す
     requestAnimationFrame(animation)
-
     // 描画
     renderer.render(stage)
   }
 
-  /**
-   * animation関数を呼び出す
-   */
+  //  animation関数を呼び出す
   animation()
 
   // canvasの取得
-  const canvas = document.getElementsByTagName('canvas')[0]
-  const ctx = canvas.getContext('2d')
-  // canvasからストリームを取得
+  const canvas = stageDiv.getElementsByTagName('canvas')[0]
+  console.log(canvas)
   const stream = canvas.captureStream()
   // ストリームからMediaRecorderを生成
   const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' })
-  // ダウンロード用のリンクを準備
-  const anchor = document.getElementById('downloadlink')
-  console.log('anchor: ', anchor)
+  // // ダウンロード用のリンクを準備
+  // const anchor = document.getElementById('download-link')
+  // console.log('anchor: ', anchor)
+
   // 録画終了時に動画ファイルのダウンロードリンクを生成する処理
-  recorder.ondataavailable = function (e) {
+  recorder.ondataavailable = (e) => {
     console.log('終了時の処理 start')
     const videoBlob = new Blob([e.data], { type: e.data.type })
-    console.log('type = ', e.data.type)
     const blobUrl = window.URL.createObjectURL(videoBlob)
     console.log('url: ', blobUrl)
-    console.log(username, date)
-    // anchor.download = `${username + date}.webm`
-    // anchor.href = blobUrl
-    // anchor.style.display = 'block'
-    // console.log('anchor.download.bytes()', anchor.download.bytes())
-    // const videoFile = new File([anchor.download.bytes() + 2, anchor.download, e.data], anchor.download, {
-    //   type: e.data.type,
-    // })
-    // const oReq = new XMLHttpRequest()
-    // oReq.open('POST', '/save-movie', true)
-    // oReq.onload = function (oEvent) {
-    //   // Uploaded.
-    // }
-    // console.log('check:', ['header', videoFile])
-    // // oReq.send(videoFile);
-    // console.log('send successfully videos')
-    // // 録画開始
+    setBlob(blobUrl)
   }
   recorder.start()
   console.log('record: start')
-  // const action_l = action
-  // const element_l = element
-  //   const action_l = action.split(',')
-  //   const element_l = element.split(',')
 
+  // 各ブロックに対応したアニメーションの実行
   for (let i = 0; i < action.length; i++) {
-    console.log(`i : ${action[i]}, ${element[i]}`)
     switch (action[i]) {
       case 'run':
-        console.log('run')
         await Run([], stage)
         break
       case 'ride':
-        console.log('ride')
         await Ride([element[i]], stage)
         break
       case 'play':
@@ -1504,9 +1473,10 @@ export async function main(action, element, username, date) {
   }
   console.log('record: stop')
   recorder.stop()
+
   // Canvas要素を削除する
   document.getElementById('stage').removeChild(renderer.view)
-  // Step2に進むボタンを有効にする
+  // サムネイル作成に進むボタンを有効にする
   document.getElementById('to-step2-button').removeAttribute('disabled', '')
 }
 
