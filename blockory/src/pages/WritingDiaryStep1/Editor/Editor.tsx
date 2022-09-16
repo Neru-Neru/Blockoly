@@ -27,12 +27,12 @@ type Category = {
 
 type Props = {
   setDiaryCode: Dispatch<SetStateAction<string>>
-  setBlock: Dispatch<
-    SetStateAction<{
-      element: string[]
-      action: string[]
-    }>
-  >
+  // setBlock: Dispatch<
+  //   SetStateAction<{
+  //     element: string[]
+  //     action: string[]
+  //   }>
+  // >
 }
 
 type Handler = {
@@ -56,7 +56,7 @@ const Editor: React.ForwardRefRenderFunction<Handler, Props> = (props, ref) => {
   //   </block>
   // </xml>
 
-  const { setDiaryCode, setBlock } = props
+  const { setDiaryCode } = props
 
   const categories = Categories as unknown as ToolboxInfo
 

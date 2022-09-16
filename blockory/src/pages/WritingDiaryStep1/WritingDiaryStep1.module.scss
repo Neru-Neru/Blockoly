@@ -60,3 +60,13 @@
     font-size: 2rem;
   }
 }
+
+.stage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  canvas {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}

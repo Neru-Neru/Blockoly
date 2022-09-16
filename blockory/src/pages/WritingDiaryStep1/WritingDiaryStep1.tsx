@@ -18,12 +18,11 @@ type Handler = {
 
 const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
-  const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
+  // const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
   const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
 
   const navigate = useNavigate()
   const ref = React.useRef<Handler>(null)
-  const today = new Date()
 
   // const hideDescButton = () => {
   //   const afterDownloadText = document.getElementById('after_download')
@@ -48,10 +47,18 @@ const WritingDiaryStep1: React.FC = () => {
     }
   }
 
+  const formatDate = (dt: Date) => {
+    const y = dt.getFullYear()
+    const m = `00${dt.getMonth() + 1}`.slice(-2)
+    const d = `00${dt.getDate()}`.slice(-2)
+    return `${y}-${m}-${d}`
+  }
+
   const clickMovieButton = () => {
-    const b = ref.current?.xmlToList()
-    console.log(b)
-    if (b) main(b.action, b.element, authInfo.UserName, today)
+    if (ref.current) {
+      const blocks = ref.current?.xmlToList()
+      main(blocks.action, blocks.element, authInfo.UserName, formatDate(new Date()))
+    }
   }
 
   return (
@@ -66,7 +73,7 @@ const WritingDiaryStep1: React.FC = () => {
                 アクションブロックをくみあわせてね
               </p>
             </div>
-            <Editor ref={ref} setDiaryCode={setDiaryCode} setBlock={setBlock} />
+            <Editor ref={ref} setDiaryCode={setDiaryCode} />
           </div>
         </div>
         <div className="col-md-5 h-100">
@@ -83,11 +90,12 @@ const WritingDiaryStep1: React.FC = () => {
             <div className={styles.movieDescription}>
               <p className={styles.description}>ブロックをくみたてたら、どうがをみてみよう！</p>
             </div>
-            <div style={{ height: '75%', background: '#f3f3f3' }} />
-            <div className="stage" id="stage" />
-            <button type="button" aria-label="start movie" onClick={clickMovieButton}>
-              どうがをみる
-            </button>
+            <div style={{ height: '75%', background: '#f3f3f3' }}>
+              <div className={styles.stage} id="stage" />
+              <button type="button" aria-label="start movie" onClick={clickMovieButton}>
+                どうがをみる
+              </button>
+            </div>
           </div>
           <ToStep2Button onClick={navigateToStep2} />
         </div>

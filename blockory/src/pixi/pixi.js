@@ -7,8 +7,8 @@ const suffix = '.png'
 async function record() {
   let recorder
   // canvasの取得
-  canvas = document.getElementsByTagName('canvas')[0]
-  ctx = canvas.getContext('2d')
+  const canvas = document.getElementsByTagName('canvas')[0]
+  const ctx = canvas.getContext('2d')
   // canvasからストリームを取得
   const stream = canvas.captureStream()
   // ストリームからMediaRecorderを生成
@@ -41,14 +41,14 @@ async function record() {
 
 function makeCharactor(name) {
   let json
-  return fetch(`./img/${name}/config.json`)
+  return fetch(`${process.env.PUBLIC_URL}/${name}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
       console.log(json)
       const ttCharactor = []
       for (let i = 1; i <= json.length; i++) {
-        ttCharactor.push(PIXI.Texture.fromImage(`./img/${json.name}/${json.name}${i}${suffix}`))
+        ttCharactor.push(PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/${json.name}/${json.name}${i}${suffix}`))
       }
       let return_obj
       const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -173,7 +173,7 @@ async function Swap(sprite1, sprite2, cb) {
 async function Ride(args, stage) {
   const element = args[0]
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -182,7 +182,9 @@ async function Ride(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -192,7 +194,7 @@ async function Ride(args, stage) {
   mvCharactor.width = 100
   mvCharactor.position.set(200, 100)
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -200,7 +202,9 @@ async function Ride(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -231,7 +235,7 @@ for (let i = 0; i < 5; i++)
 
 async function Run(args, stage) {
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -240,7 +244,9 @@ async function Run(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -260,7 +266,7 @@ async function Run(args, stage) {
 async function Eat(args, stage) {
   const element = args[0]
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -269,7 +275,9 @@ async function Eat(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -278,7 +286,7 @@ async function Eat(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -286,7 +294,9 @@ async function Eat(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -296,7 +306,7 @@ async function Eat(args, stage) {
   eleCharactor.width = 100
 
   const effect1 = 'kirakira'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -304,7 +314,9 @@ async function Eat(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -331,7 +343,7 @@ async function Eat(args, stage) {
 async function Debug(args, stage) {
   const element = args[0]
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -340,7 +352,9 @@ async function Debug(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -349,7 +363,7 @@ async function Debug(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -357,7 +371,9 @@ async function Debug(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -376,7 +392,7 @@ async function Debug(args, stage) {
 async function Draw(args, stage) {
   const element = args[0]
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -385,7 +401,9 @@ async function Draw(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -394,7 +412,7 @@ async function Draw(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -402,7 +420,9 @@ async function Draw(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -412,7 +432,7 @@ async function Draw(args, stage) {
   eleCharactor.width = 100
 
   const effect = 'pencil'
-  await fetch(`./img/materials_png/${effect}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -420,7 +440,9 @@ async function Draw(args, stage) {
 
   const tteffCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteffCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteffCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const effCharactor = new PIXI.extras.AnimatedSprite(tteffCharactor)
@@ -444,7 +466,7 @@ async function Draw(args, stage) {
 async function Play(args, stage) {
   let json
   const element = args[0]
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -453,7 +475,9 @@ async function Play(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -462,7 +486,7 @@ async function Play(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -470,7 +494,9 @@ async function Play(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -491,16 +517,19 @@ async function Play(args, stage) {
 async function GetUp(args, stage) {
   // 主人公オブジェクト生成部
   let json
-  await fetch('./img/materials_png/' + 'girl_front' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl_front/config.json`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data)
       json = data
     })
 
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
   // mvCharactor.play();
@@ -510,7 +539,7 @@ async function GetUp(args, stage) {
   // 主人公オブジェクト生成部終了
   // kiraオブジェクト生成部開始
   const kira = 'kirakira'
-  await fetch(`./img/materials_png/${kira}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${kira}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -518,7 +547,9 @@ async function GetUp(args, stage) {
 
   const ttkiraCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttkiraCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttkiraCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const kiraCharactor = new PIXI.extras.AnimatedSprite(ttkiraCharactor)
@@ -530,7 +561,7 @@ async function GetUp(args, stage) {
 
   // clockオブジェクト生成部開始
   const clock = 'wake-up_watch'
-  await fetch(`./img/materials_png/${clock}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${clock}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -538,7 +569,9 @@ async function GetUp(args, stage) {
 
   const ttclockCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttclockCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttclockCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const clockCharactor = new PIXI.extras.AnimatedSprite(ttclockCharactor)
@@ -548,7 +581,7 @@ async function GetUp(args, stage) {
   clockCharactor.width = 100
   // clockオブジェクト生成部終了
   const effect1 = 'bed'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -556,7 +589,9 @@ async function GetUp(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -566,7 +601,7 @@ async function GetUp(args, stage) {
   eff1Charactor.width = 180
 
   const effect2 = '8th_note'
-  await fetch(`./img/materials_png/${effect2}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect2}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -574,7 +609,9 @@ async function GetUp(args, stage) {
 
   const tteff2Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff2Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff2Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff2Charactor = new PIXI.extras.AnimatedSprite(tteff2Charactor)
@@ -585,7 +622,7 @@ async function GetUp(args, stage) {
 
   // zzzオブジェクト生成部開始
   const zzz = 'zzz'
-  await fetch(`./img/materials_png/${zzz}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${zzz}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -593,7 +630,9 @@ async function GetUp(args, stage) {
 
   const ttzzzCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttzzzCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttzzzCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const zzzCharactor = new PIXI.extras.AnimatedSprite(ttzzzCharactor)
@@ -632,7 +671,7 @@ async function GetUp(args, stage) {
 async function Sleep(args, stage) {
   // 主人公オブジェクト生成部
   let json
-  await fetch('./img/materials_png/' + 'girl_front' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl_front/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -641,7 +680,9 @@ async function Sleep(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
   // mvCharactor.play();
@@ -651,7 +692,7 @@ async function Sleep(args, stage) {
   // 主人公オブジェクト生成部終了
   // kiraオブジェクト生成部開始
   const kira = 'kirakira'
-  await fetch(`./img/materials_png/${kira}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${kira}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -659,7 +700,9 @@ async function Sleep(args, stage) {
 
   const ttkiraCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttkiraCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttkiraCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const kiraCharactor = new PIXI.extras.AnimatedSprite(ttkiraCharactor)
@@ -671,7 +714,7 @@ async function Sleep(args, stage) {
 
   // clockオブジェクト生成部開始
   const clock = 'wake-up_watch'
-  await fetch(`./img/materials_png/${clock}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${clock}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -679,7 +722,9 @@ async function Sleep(args, stage) {
 
   const ttclockCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttclockCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttclockCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const clockCharactor = new PIXI.extras.AnimatedSprite(ttclockCharactor)
@@ -691,7 +736,7 @@ async function Sleep(args, stage) {
 
   // zzzオブジェクト生成部開始
   const zzz = 'zzz'
-  await fetch(`./img/materials_png/${zzz}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${zzz}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -699,7 +744,9 @@ async function Sleep(args, stage) {
 
   const ttzzzCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttzzzCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttzzzCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const zzzCharactor = new PIXI.extras.AnimatedSprite(ttzzzCharactor)
@@ -710,7 +757,7 @@ async function Sleep(args, stage) {
   // zzオブジェクト生成部終了
 
   const effect1 = 'bed'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -718,7 +765,9 @@ async function Sleep(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -750,7 +799,7 @@ async function Sleep(args, stage) {
 async function Watch(args, stage) {
   const element = args[0]
   let json
-  await fetch('./img/materials_png/' + 'girl_back' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl_back/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -759,7 +808,9 @@ async function Watch(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -769,7 +820,7 @@ async function Watch(args, stage) {
   mvCharactor.width = 120
   mvCharactor.position.set(200, 100)
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -777,7 +828,9 @@ async function Watch(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -787,7 +840,7 @@ async function Watch(args, stage) {
   eleCharactor.width = 75
 
   const tv = 'tv'
-  await fetch(`./img/materials_png/${tv}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${tv}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -795,7 +848,9 @@ async function Watch(args, stage) {
 
   const tttvCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tttvCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tttvCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const tvCharactor = new PIXI.extras.AnimatedSprite(tttvCharactor)
@@ -805,7 +860,7 @@ async function Watch(args, stage) {
   tvCharactor.width = 180
 
   const effect1 = '8th_note'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -813,7 +868,9 @@ async function Watch(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -843,7 +900,7 @@ for (let i = 0; i < 5; i++)
 async function Buy(args, stage) {
   const element = args[0]
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -852,7 +909,9 @@ async function Buy(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -861,7 +920,7 @@ async function Buy(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -869,7 +928,9 @@ async function Buy(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -879,7 +940,7 @@ async function Buy(args, stage) {
   eleCharactor.width = 100
 
   const effect = 'money2'
-  await fetch(`./img/materials_png/${effect}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -887,7 +948,9 @@ async function Buy(args, stage) {
 
   const tteffCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteffCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteffCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const effCharactor = new PIXI.extras.AnimatedSprite(tteffCharactor)
@@ -910,7 +973,7 @@ async function Buy(args, stage) {
 }
 async function Study(args, stage) {
   let json
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -919,7 +982,9 @@ async function Study(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -929,7 +994,7 @@ async function Study(args, stage) {
   mvCharactor.width = 100
 
   /*
-await fetch("./img/materials_png/" + element + "/config.json")
+await fetch("${process.env.PUBLIC_URL}/materials_png/" + element + "/config.json")
 .then(response => response.json())
 .then(data => {
 		json = data;
@@ -938,7 +1003,7 @@ await fetch("./img/materials_png/" + element + "/config.json")
 let tteleCharactor = [];
 for(let i = 1; i <= json.length; i++)
 {
-tteleCharactor.push(PIXI.Texture.fromImage('./img/materials_png/' + json.name + '/' +json.name + i + ".png"));
+tteleCharactor.push(PIXI.Texture.fromImage('${process.env.PUBLIC_URL}/materials_png/' + json.name + '/' +json.name + i + ".png"));
 }
 
 let eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor);
@@ -948,7 +1013,7 @@ eleCharactor.height = 100;
 eleCharactor.width = 100;
 */
   const hatena = 'hatena'
-  await fetch(`./img/materials_png/${hatena}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${hatena}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -956,7 +1021,9 @@ eleCharactor.width = 100;
 
   const tthateCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tthateCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tthateCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const hateCharactor = new PIXI.extras.AnimatedSprite(tthateCharactor)
@@ -970,7 +1037,7 @@ eleCharactor.width = 100;
   hateCharactor.position.set(180, 120)
 
   const effect1 = 'binder'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -978,7 +1045,9 @@ eleCharactor.width = 100;
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -988,7 +1057,7 @@ eleCharactor.width = 100;
   eff1Charactor.width = 180
 
   const effect2 = 'pencil'
-  await fetch(`./img/materials_png/${effect2}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect2}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -996,7 +1065,9 @@ eleCharactor.width = 100;
 
   const tteff2Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff2Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff2Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff2Charactor = new PIXI.extras.AnimatedSprite(tteff2Charactor)
@@ -1006,7 +1077,7 @@ eleCharactor.width = 100;
   eff2Charactor.width = 100
 
   const bikkuri = 'bikkuri'
-  await fetch(`./img/materials_png/${bikkuri}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${bikkuri}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1014,7 +1085,9 @@ eleCharactor.width = 100;
 
   const ttbikkuCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    ttbikkuCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    ttbikkuCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const bikkuCharactor = new PIXI.extras.AnimatedSprite(ttbikkuCharactor)
@@ -1048,7 +1121,7 @@ eleCharactor.width = 100;
 async function Make(args, stage) {
   let json
   const element = args[0]
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1057,7 +1130,9 @@ async function Make(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -1066,7 +1141,7 @@ async function Make(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1074,7 +1149,9 @@ async function Make(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -1084,7 +1161,7 @@ async function Make(args, stage) {
   eleCharactor.width = 100
 
   const effect1 = 'hammer'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1092,7 +1169,9 @@ async function Make(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -1121,7 +1200,7 @@ async function Make(args, stage) {
 async function Cook(args, stage) {
   let json
   const element = args[0]
-  await fetch('./img/materials_png/' + 'girl' + '/config.json')
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/girl/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1130,7 +1209,9 @@ async function Cook(args, stage) {
   const ttCharactor = []
 
   for (let i = 1; i <= json.length; i++) {
-    ttCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}${suffix}`))
+    ttCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}${suffix}`)
+    )
   }
 
   const mvCharactor = new PIXI.extras.AnimatedSprite(ttCharactor)
@@ -1139,7 +1220,7 @@ async function Cook(args, stage) {
   mvCharactor.height = 100
   mvCharactor.width = 100
 
-  await fetch(`./img/materials_png/${element}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${element}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1147,7 +1228,9 @@ async function Cook(args, stage) {
 
   const tteleCharactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteleCharactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteleCharactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eleCharactor = new PIXI.extras.AnimatedSprite(tteleCharactor)
@@ -1157,7 +1240,7 @@ async function Cook(args, stage) {
   eleCharactor.width = 100
 
   const effect1 = 'frypan'
-  await fetch(`./img/materials_png/${effect1}/config.json`)
+  await fetch(`${process.env.PUBLIC_URL}/materials_png/${effect1}/config.json`)
     .then((response) => response.json())
     .then((data) => {
       json = data
@@ -1165,7 +1248,9 @@ async function Cook(args, stage) {
 
   const tteff1Charactor = []
   for (let i = 1; i <= json.length; i++) {
-    tteff1Charactor.push(PIXI.Texture.fromImage(`./img/materials_png/${json.name}/${json.name}${i}.png`))
+    tteff1Charactor.push(
+      PIXI.Texture.fromImage(`${process.env.PUBLIC_URL}/materials_png/${json.name}/${json.name}${i}.png`)
+    )
   }
 
   const eff1Charactor = new PIXI.extras.AnimatedSprite(tteff1Charactor)
@@ -1300,7 +1385,6 @@ export async function main(action, element, username, date) {
         await Draw([element[i]], stage)
         break
       case 'getup':
-        console.log('getup')
         await GetUp([element[i]], stage)
         break
       case 'sleep':
