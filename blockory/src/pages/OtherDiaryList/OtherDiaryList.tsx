@@ -47,14 +47,16 @@ const OtherDiaryList: React.FC = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-5 h-100 p-3">
-          <div className="h-100">
-            <Calendar diaryInfoList={diaryInfoList} date={date} setDate={setDate} />
+        <div className={styles.wrapper}>
+          <div className={styles.calendarWrapper}>
+            <div className="h-100">
+              <Calendar diaryInfoList={diaryInfoList} date={date} setDate={setDate} />
+            </div>
           </div>
-        </div>
-        <div className="col-7 h-100 p-3">
-          <h3 className={styles.title}>みんなのにっき</h3>
-          <ThumbnailList diaryInfoList={diaryInfoList} />
+          <div className={styles.thumbnailListWrapper}>
+            <h3 className={styles.title}>みんなのにっき</h3>
+            <ThumbnailList diaryInfoList={diaryInfoList} />
+          </div>
         </div>
       </div>
     </div>

@@ -1418,7 +1418,7 @@ export async function main(action, element, username, date, setBlob) {
     const videoBlob = new Blob([e.data], { type: e.data.type })
     const blobUrl = window.URL.createObjectURL(videoBlob)
     console.log('url: ', blobUrl)
-    setBlob(blobUrl)
+    setBlob(videoBlob)
   }
   recorder.start()
   console.log('record: start')

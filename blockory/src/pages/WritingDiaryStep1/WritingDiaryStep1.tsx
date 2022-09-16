@@ -21,7 +21,7 @@ const WritingDiaryStep1: React.FC = () => {
   const [diaryCode, setDiaryCode] = useState<string>('')
   // const [block, setBlock] = useState<{ element: string[]; action: string[] }>({ element: [], action: [] })
   const [authInfo, setAuthInfo] = useContext(AuthInfoContext)
-  const [blob, setBlob] = useState<string>()
+  const [blob, setBlob] = useState<Blob>()
 
   const navigate = useNavigate()
   const ref = React.useRef<Handler>(null)
@@ -45,7 +45,7 @@ const WritingDiaryStep1: React.FC = () => {
   const navigateToStep2 = () => {
     if (ref.current) {
       const blocks = ref.current?.xmlToList()
-      navigate('/writingstep2', { state: { block: blocks, video: blob } })
+      navigate('/writingstep2', { state: { block: blocks, video: blob, diaryCode } })
     }
   }
 

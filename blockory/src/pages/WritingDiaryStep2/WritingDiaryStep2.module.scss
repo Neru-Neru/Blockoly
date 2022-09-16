@@ -1,11 +1,12 @@
 .wrapper {
+  padding-top: 50px;
   width: 50%;
   min-width: 660px;
   margin: 0 auto;
 }
 
 .button {
-  padding: 0 12px;
+  padding: 6px 12px;
   margin-top: 6px;
   background: #6c757d;
   color: #fff;
@@ -29,4 +30,9 @@
     box-shadow: none !important;
     text-shadow: none !important;
   }
+}
+
+.submit {
+  background: #e0851d;
+  border: 2px solid #e0851d;
 }
